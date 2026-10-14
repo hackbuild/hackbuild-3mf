@@ -1267,6 +1267,50 @@
       }
     },
     {
+      "id": "seat.pinOnContactMin",
+      "value": 0.11,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-14",
+        "source": "originals/pip/files/haft-src/src/layout.js line 39 (board inset 1.38, lineage pip.layout/haft-9) and originals/gudgeon/files/extracted/05_part2d_circuit.js lines 7 to 18 (inset 1.27, \"confirm on the board with calipers\"), the two values the catalog row rp2040-zero dims.inset records as a conflict: 1.38 less 1.27, so a board pin centre this far inside its printed contact still lands on it at either inset (computed from the two sources); pad sizes are not in the catalog row, so the pin centre stands for the pad; no coupon recorded; read by CHK-NET-46"
+      }
+    },
+    {
+      "id": "seat.bumpPress.lo",
+      "value": 0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-14",
+        "source": "originals/pip/files/haft-src/src/model.js line 576 (fit 'bezel squeeze on the board', ok when B.press > 0 and B.press <= 0.5, 'interference, the ribs hold it on the bumps'; ribs model.js lines 313 to 319 reach boardTop - press, lineage pip.model/haft-9); lo end, exclusive: a press of 0 leaves the board resting on the bumps; no coupon recorded; read by CHK-NET-46"
+      }
+    },
+    {
+      "id": "seat.bumpPress.hi",
+      "value": 0.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-14",
+        "source": "originals/pip/files/haft-src/src/model.js line 576 (fit 'bezel squeeze on the board', ok when B.press > 0 and B.press <= 0.5); hi end; no coupon recorded; read by CHK-NET-46"
+      }
+    },
+    {
+      "id": "seat.socketPinMin",
+      "value": 2.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-14",
+        "source": "originals/pip/files/haft-src/src/model.js line 595 (fit 'pin length into the socket', ok when B.pinLen >= 2.0, 'trim the header pins to this'); no coupon recorded; read by CHK-NET-46"
+      }
+    },
+    {
       "id": "route.stick.grid",
       "value": 0.2,
       "unit": "mm",

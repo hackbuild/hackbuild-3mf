@@ -129,7 +129,12 @@ const summary = `${path.relative(ROOT, OUT)}: ${inp.filaments.map((f) => f.mater
 if (process.argv.includes("--check")) {
   const have = existsSync(OUT) ? readFileSync(OUT, "utf8") : "";
   if (have !== text) {
-    console.error(`${path.relative(ROOT, OUT)} drifted from the flex-pair build; rerun node tools/corpus/3mf/dump-input.mjs`);
+    // Top-level fields only: a moved mesh shows as objects, a moved hash as buildHash.
+    let old = {};
+    try { old = JSON.parse(have); } catch { /* absent or unreadable: every field reads as moved */ }
+    const moved = Object.keys({ ...old, ...inp }).filter((k) => JSON.stringify(old[k]) !== JSON.stringify(inp[k]));
+    const hash = (h) => (typeof h === "string" ? h.slice(0, 8) : "none");
+    console.error(`${path.relative(ROOT, OUT)} drifted from the flex-pair build: fields moved ${moved.join(", ")}; buildHash ${hash(old.buildHash)} committed, ${hash(inp.buildHash)} built. regenerate with: npx tsc -b && node tools/corpus/3mf/dump-input.mjs, then commit the file`);
     process.exit(1);
   }
   console.log(`unchanged ${summary}`);
