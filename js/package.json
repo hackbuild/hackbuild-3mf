@@ -1,0 +1,49 @@
+{
+  "name": "hackbuild-3mf",
+  "version": "0.1.0",
+  "description": "Orca and Bambu dialect 3MF writer, validator mirror and artifact hash, from hackbuild-fab.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Moheeb Zara <hackbuildvideo@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackbuild/hackbuild-3mf.git",
+    "directory": "js"
+  },
+  "engines": {
+    "node": "^22.18.0 || >=24.11.0"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./data/filament_template.json": "./data/filament_template.json",
+    "./data/filament_presets.json": "./data/filament_presets.json",
+    "./seed/materials.json": "./seed/materials.json"
+  },
+  "files": [
+    "dist",
+    "data",
+    "seed/materials.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "[ -e ../.git ] && [ -f ../.githooks/commit-msg ] && git -C .. config core.hooksPath .githooks || true",
+    "prepack": "npm run build",
+    "test": "vitest run",
+    "check:presets": "node scripts/harvest-presets.mjs --check"
+  },
+  "dependencies": {
+    "jszip": "3.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "fast-check": "4.10.2",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}

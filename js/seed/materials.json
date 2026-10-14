@@ -1,0 +1,11 @@
+{
+  "_note": "Per material defaults used by orca3mf.py and orca3mf.js for the computed per-filament keys. Temperatures in C, density g/cm3, cost per kg, vitrification (softening) C, max volumetric speed mm3/s, fan speeds percent. Tune per machine; these are Orca Generic profile ballparks.",
+  "PLA":  {"tray":"GFL99","nozzle":215,"nozzle_first":220,"bed":55,"bed_first":55,"density":1.24,"cost":20,"vitrification":45,"maxvol":12,"fan_max":100,"fan_min":100,"overhang_fan":100,"flow":0.98,"range_low":190,"range_high":240},
+  "PETG": {"tray":"GFG99","nozzle":240,"nozzle_first":245,"bed":70,"bed_first":70,"density":1.27,"cost":25,"vitrification":60,"maxvol":10,"fan_max":40,"fan_min":20,"overhang_fan":90,"flow":0.95,"range_low":220,"range_high":270},
+  "ABS":  {"tray":"GFB99","nozzle":250,"nozzle_first":255,"bed":90,"bed_first":90,"density":1.04,"cost":25,"vitrification":90,"maxvol":12,"fan_max":30,"fan_min":10,"overhang_fan":80,"flow":0.95,"range_low":240,"range_high":270},
+  "ASA":  {"tray":"GFB98","nozzle":255,"nozzle_first":260,"bed":95,"bed_first":95,"density":1.05,"cost":28,"vitrification":95,"maxvol":12,"fan_max":30,"fan_min":10,"overhang_fan":80,"flow":0.95,"range_low":240,"range_high":280},
+  "TPU":  {"tray":"GFU99","nozzle":225,"nozzle_first":230,"bed":40,"bed_first":40,"density":1.21,"cost":40,"vitrification":35,"maxvol":3.2,"fan_max":100,"fan_min":100,"overhang_fan":100,"flow":0.98,"range_low":200,"range_high":250},
+  "PC":   {"tray":"GFC99","nozzle":270,"nozzle_first":270,"bed":100,"bed_first":100,"density":1.20,"cost":40,"vitrification":110,"maxvol":10,"fan_max":40,"fan_min":10,"overhang_fan":80,"flow":0.94,"range_low":250,"range_high":300},
+  "PA":   {"tray":"GFN99","nozzle":265,"nozzle_first":270,"bed":80,"bed_first":80,"density":1.14,"cost":40,"vitrification":80,"maxvol":8,"fan_max":40,"fan_min":10,"overhang_fan":80,"flow":0.94,"range_low":250,"range_high":300},
+  "PVA":  {"tray":"GFS99","nozzle":200,"nozzle_first":200,"bed":55,"bed_first":55,"density":1.23,"cost":60,"vitrification":50,"maxvol":4,"fan_max":100,"fan_min":100,"overhang_fan":100,"flow":0.95,"range_low":180,"range_high":220}
+}

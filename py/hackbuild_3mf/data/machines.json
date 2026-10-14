@@ -1,0 +1,204 @@
+{
+  "note": "Machines and dated presets (D-101, PROFILE.md 8). Preset ids are <machine>[-n<nozzle x 100>]_<yyyymmdd> by harvest date.",
+  "machines": [
+    {
+      "id": "ffc5p",
+      "name": "Flashforge Creator 5 Pro",
+      "process": "fdm",
+      "envelope": [
+        256,
+        256,
+        256
+      ],
+      "toolheads": [
+        {
+          "index": 1,
+          "nozzleMm": 0.4,
+          "nozzleMaterial": "hardened_steel",
+          "flexOk": true,
+          "provenance": {
+            "tier": "vendor",
+            "method": "datasheet",
+            "date": "2026-08-19",
+            "source": "fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf nozzle_diameter and nozzle_type element 1; flexOk from extruder_type Direct Drive"
+          }
+        },
+        {
+          "index": 2,
+          "nozzleMm": 0.4,
+          "nozzleMaterial": "hardened_steel",
+          "flexOk": true,
+          "provenance": {
+            "tier": "vendor",
+            "method": "datasheet",
+            "date": "2026-08-19",
+            "source": "fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf nozzle_diameter and nozzle_type element 2; flexOk from extruder_type Direct Drive"
+          }
+        },
+        {
+          "index": 3,
+          "nozzleMm": 0.4,
+          "nozzleMaterial": "hardened_steel",
+          "flexOk": true,
+          "provenance": {
+            "tier": "vendor",
+            "method": "datasheet",
+            "date": "2026-08-19",
+            "source": "fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf nozzle_diameter and nozzle_type element 3; flexOk from extruder_type Direct Drive"
+          }
+        },
+        {
+          "index": 4,
+          "nozzleMm": 0.4,
+          "nozzleMaterial": "hardened_steel",
+          "flexOk": true,
+          "provenance": {
+            "tier": "vendor",
+            "method": "datasheet",
+            "date": "2026-08-19",
+            "source": "fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf nozzle_diameter and nozzle_type element 4; flexOk from extruder_type Direct Drive"
+          }
+        }
+      ],
+      "presets": [
+        {
+          "id": "ffc5p_20260819",
+          "nozzle": 0.4,
+          "layer": 0.24,
+          "firstLayer": 0.25,
+          "lineWidth": 0.42,
+          "wallLoops": 2,
+          "slicer": {
+            "app": "BambuStudio-01.10.01.50",
+            "printer": "Flashforge Creator 5 Pro 0.4 nozzle",
+            "process": "0.24mm Standard @FF C5",
+            "filament": "Generic {TYPE} @FF C5P",
+            "bedType": "Textured PEI Plate"
+          },
+          "comp": {
+            "xyHole": 0,
+            "xyContour": 0,
+            "elephantFoot": 0.1,
+            "elephantFootLayers": 1
+          },
+          "provenance": {
+            "tier": "vendor",
+            "method": "datasheet",
+            "date": "2026-08-19",
+            "source": "slicer save 2026-08-19; fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf project_settings.config (layer_height, initial_layer_print_height, line_width, wall_loops, xy_hole_compensation, xy_contour_compensation, elefant_foot_compensation, elefant_foot_compensation_layers); bedType Textured PEI Plate by owner report 2026-10-05 (14 of 18 Creator 5 Pro saves with the key read it); this save wrote High Temp Plate"
+          }
+        },
+        {
+          "id": "ffc5p-n025_20260819",
+          "nozzle": 0.25,
+          "layer": 0.12,
+          "firstLayer": 0.1,
+          "lineWidth": 0.25,
+          "wallLoops": 3,
+          "slicer": {
+            "app": "BambuStudio-01.10.01.50",
+            "printer": "Flashforge Creator 5 Pro 0.25 nozzle",
+            "process": "0.12mm Standard @FF C5 0.25 nozzle",
+            "filament": "Generic {TYPE} @FF C5P 0.25 nozzle",
+            "bedType": "Textured PEI Plate"
+          },
+          "comp": {
+            "xyHole": 0,
+            "xyContour": 0,
+            "elephantFoot": 0,
+            "elephantFootLayers": 1
+          },
+          "provenance": {
+            "tier": "vendor",
+            "method": "datasheet",
+            "date": "2026-08-19",
+            "source": "slicer save 2026-08-19; 3d/coin/hsl.3mf project_settings.config (layer_height, initial_layer_print_height, line_width, wall_loops, xy_hole_compensation, xy_contour_compensation, elefant_foot_compensation, elefant_foot_compensation_layers); bedType Textured PEI Plate by owner report 2026-10-05 (14 of 18 Creator 5 Pro saves with the key read it); this save wrote High Temp Plate; filament pattern inferred from the harvested name Generic HS PLA @FF C5P 0.25 nozzle"
+          }
+        }
+      ],
+      "provenance": {
+        "tier": "vendor",
+        "method": "datasheet",
+        "date": "2026-08-19",
+        "source": "seed machines.ffc5p (OGEE R16-P fits 2026-08), seed tier measured loads as vendor (PROFILE.md 2.4); envelope from fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf printable_area 0x0 256x0 256x256 0x256 and printable_height 256; 4 toolheads from nozzle_diameter"
+      }
+    },
+    {
+      "id": "centauri",
+      "name": "Elegoo Centauri Carbon",
+      "process": "fdm",
+      "envelope": [
+        256,
+        256,
+        256
+      ],
+      "toolheads": [],
+      "presets": [],
+      "provenance": {
+        "tier": "vendor",
+        "method": "datasheet",
+        "date": "2026-10-04",
+        "source": "seed machines.centauri (NACELLE); no toolhead rows recorded, so every slot fails CHK-3MF-09 until a person enters them"
+      }
+    },
+    {
+      "id": "laser1220",
+      "name": "shop laser",
+      "process": "laser",
+      "envelope": {
+        "sheet": [
+          1220,
+          610
+        ]
+      },
+      "toolheads": [],
+      "kerf": null,
+      "presets": [],
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed machines.laser1220 (shop; cut the coupon)"
+      }
+    },
+    {
+      "id": "sheet600",
+      "name": "laser sheet 600 x 400",
+      "process": "laser",
+      "envelope": {
+        "sheet": [
+          600,
+          400
+        ]
+      },
+      "toolheads": [],
+      "kerf": null,
+      "presets": [],
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed machines.sheet600 (SLUG, OGEE sheets)"
+      }
+    },
+    {
+      "id": "cricut",
+      "name": "Cricut, copper tape roll",
+      "process": "vinyl",
+      "envelope": {
+        "sheet": [
+          101.6,
+          10058
+        ]
+      },
+      "toolheads": [],
+      "presets": [],
+      "provenance": {
+        "tier": "vendor",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed machines.cricut (STAVE tape roll)"
+      }
+    }
+  ]
+}

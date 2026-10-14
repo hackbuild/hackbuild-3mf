@@ -1,0 +1,3 @@
+#!/bin/sh
+# RULES.md Language on the staged blobs (D-004). CI runs the same linter over the repo.
+exec node tools/lint-voice.mjs --staged

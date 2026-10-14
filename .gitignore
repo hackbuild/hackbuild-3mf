@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+__pycache__/
+.venv/
+.pytest_cache/
+.DS_Store
+# test runners, coverage, local secrets
+test-results/
+playwright-report/
+coverage/
+.env
+.env.*
+!.env.example
+*.key
+.hbf/
+out/

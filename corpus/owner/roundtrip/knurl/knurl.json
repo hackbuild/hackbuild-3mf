@@ -1,0 +1,152 @@
+{
+  "name": "knurl",
+  "hand": "right",
+  "body": {
+    "R": 35,
+    "wall": 1.6,
+    "floor": 1.6,
+    "lid": 1.8,
+    "loop": true,
+    "loopR": 4.2,
+    "loopHole": 2.6
+  },
+  "count": {
+    "N": 33,
+    "Rc": 25,
+    "protrude": 3,
+    "disc": 3,
+    "fluteR": 1.7,
+    "fluteDepth": 1.2,
+    "numerals": "western",
+    "digitH": 2.9,
+    "numIn": 16.8,
+    "numOut": 23.3,
+    "dir": 1,
+    "font": "IBM Plex Mono",
+    "weight": "bold",
+    "boost": 0.12,
+    "startAt": 1
+  },
+  "rounds": {
+    "R": 3,
+    "d": 25,
+    "rl": 14,
+    "disc": 3,
+    "mode": "numerals",
+    "numerals": "western",
+    "digitH": 2.9,
+    "numR": 8.7,
+    "angle": 190,
+    "lobe": -1,
+    "pipR": 1.1,
+    "pipShape": "circle",
+    "pipRad": 4.6,
+    "pipStep": 2.7,
+    "font": "IBM Plex Mono",
+    "weight": "bold",
+    "boost": 0.12
+  },
+  "pawl": {
+    "thick": 1.6,
+    "len": 20,
+    "tip": 262,
+    "engage": 7,
+    "fit": 0.2,
+    "height": 3.6
+  },
+  "window": {
+    "shape": "cartouche",
+    "padW": 1.1,
+    "padH": 0.25,
+    "frame": 1,
+    "roundsShape": "arch"
+  },
+  "art": {
+    "face": {
+      "pattern": "khatam",
+      "scale": 7,
+      "lineW": 1,
+      "rot": 0,
+      "solid": false,
+      "border": 1.2,
+      "borderGap": 1.6,
+      "margin": 2.2,
+      "image": null,
+      "imgScale": 30,
+      "imgX": 0,
+      "imgY": 0,
+      "imgRot": 0
+    },
+    "back": {
+      "pattern": "rosette",
+      "scale": 27,
+      "n": 12,
+      "lineW": 1,
+      "rot": 0,
+      "solid": false,
+      "border": 1.2,
+      "borderGap": 1.6,
+      "margin": 2.2,
+      "image": null,
+      "imgScale": 30,
+      "imgX": 0,
+      "imgY": 0,
+      "imgRot": 0
+    },
+    "faceText": {
+      "on": true,
+      "text": "سبحان الله",
+      "cap": 4.6,
+      "mode": "arc",
+      "r": 27.5,
+      "angle": -90,
+      "x": 0,
+      "y": -24,
+      "rot": 0,
+      "font": "Amiri",
+      "weight": "bold",
+      "boost": 0.1
+    },
+    "backText": {
+      "on": true,
+      "text": "الحمد لله",
+      "cap": 4.6,
+      "mode": "arc",
+      "r": 27.5,
+      "angle": 90,
+      "x": 0,
+      "y": 0,
+      "rot": 0,
+      "font": "Amiri",
+      "weight": "bold",
+      "boost": 0.1
+    }
+  },
+  "colors": {
+    "body": "#000000",
+    "accent": "#ffffff",
+    "num": "#ffffff",
+    "pip": "#ffffff"
+  },
+  "ext": {
+    "body": 1,
+    "accent": 2,
+    "num": 2,
+    "pip": 2
+  },
+  "print": {
+    "inlay": 0.6,
+    "clr": 0.15,
+    "axial": 0.3,
+    "ppm": 12,
+    "tol": 0.03,
+    "minFeat": 0.5,
+    "gap": 8,
+    "layer": 0.2,
+    "material": "PETG",
+    "writeFilaments": true,
+    "printerId": "Flashforge Creator 5 Pro 0.4 nozzle",
+    "printId": "",
+    "filamentPattern": "Generic {TYPE} @FF C5P"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "about": "The one list of AI tool names and credit wording the house rules refuse (RULES.md Attribution, D-001, D-002). Read by tools/lint-voice.mjs (commit messages), tools/lint-commits.mjs (author and committer), tools/lint-authors.mjs (package.json, 3MF metadata) and tools/py/orca3mf.py (3MF Designer). Each entry is a regex fragment matched case-insensitively on whole words.",
+  "tools": ["claude", "anthropic", "chatgpt", "openai", "copilot", "gemini", "sonnet", "opus", "haiku", "codex", "gpt-?\\d[\\w.]*", "llm", "ai assistant", "cursor (?:ai|agent|ide)"],
+  "identityOnly": ["noreply@anthropic", "cursor"],
+  "generic": ["ai"],
+  "creditStrong": ["wrote", "written", "generated", "assisted", "authored", "drafted", "made with", "created with", "help", "helped", "thanks", "courtesy of", "powered by", "paired", "pairing"],
+  "creditWeak": ["with", "via", "pair"],
+  "creditKeys": ["authors?", "co-authors?", "credits?", "assistant", "writer", "thanks", "model", "ai", "agent", "tool"]
+}

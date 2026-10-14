@@ -1,0 +1,1966 @@
+{
+ "version": 1,
+ "about": "3MF conformance corpus (M00-T10, TESTING.md 6). One row per file; copies sit beside this file with their sha256. run.py runs every row through tools/py/validate_3mf.py and the TypeScript mirror. A changed expectation carries a reason.",
+ "sets": {
+  "gold": {
+   "label": "gold"
+  },
+  "known-bad": {
+   "label": "known-bad"
+  },
+  "boss": {
+   "label": "boss"
+  },
+  "owner": {
+   "label": "owner",
+   "printerPresets": {
+    "Flashforge Creator 5 Pro 0.4 nozzle": 24,
+    "Flashforge Creator 5 Pro 0.25 nozzle": 1
+   }
+  },
+  "sprue": {
+   "label": "sprue"
+  },
+  "legacy": {
+   "label": "legacy bench"
+  },
+  "cotter": {
+   "label": "cotter"
+  },
+  "roundtrip": {
+   "label": "owner round trips"
+  },
+  "downloads": {
+   "label": "owner downloads"
+  },
+  "tenon-known-good": {
+   "label": "tenon known-good"
+  }
+ },
+ "pairs": {
+  "cotter-bin": {
+   "note": "the save holds the bin parts under the shelf file name with a fourth ABS slot the owner added; type and ids compare on the three generator slots"
+  },
+  "sash": {
+   "note": "sash (4) drops the unused fourth slot; type and ids compare on the three slots both files hold"
+  },
+  "baffle-pre-r2": {
+   "note": "generator baffle.3mf (Sep 8) is not in the evidence copies; the save is checked alone"
+  },
+  "knurl": {
+   "note": "the app export has no project_settings, so type and ids are not compared; the owner moved the accent parts from slot 4 to slot 2 and saved with 2 filaments, so the part map differs",
+   "equal": {
+    "roundtrip/knurl/save/knurl-1": {
+     "filament_typeEqual": null,
+     "filament_idsEqual": null,
+     "partMapEqual": false
+    },
+    "roundtrip/knurl/save/knurl-5": {
+     "filament_typeEqual": null,
+     "filament_idsEqual": null,
+     "partMapEqual": false
+    }
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "gold",
+   "set": "gold",
+   "path": "gold/hackbuild-coin-nfc.3mf",
+   "sha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0,
+     "filaments": 3
+    },
+    "allTemplateAtN": true,
+    "componentsResolve": true
+   }
+  },
+  {
+   "id": "known-bad/cask-empty-plate",
+   "set": "known-bad",
+   "path": "known-bad/cask-empty-plate.3mf",
+   "sha256": "af0075baff988a1356799249af4aa62a2492313eb86e50508a436324672ec95a",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/cask/cask_cap_hackbuild.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-3MF-06",
+    "CHK-3MF-07"
+   ]
+  },
+  {
+   "id": "known-bad/gold-missing-part",
+   "set": "known-bad",
+   "path": "known-bad/gold-missing-part.3mf",
+   "sha256": "b34860ffee86437e6a2af2f39c19e2e98c3cee05895ec42392ace841e3aaa6de",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-3MF-06"
+   ],
+   "sourceSha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "edit": "every component p:path in 3D/3dmodel.model set to /3D/Objects/missing.model"
+  },
+  {
+   "id": "known-bad/overhang-numeric",
+   "set": "known-bad",
+   "path": "known-bad/overhang-numeric.3mf",
+   "sha256": "1f36d391725d195c8e833d92abbdadc383c9068ba3a161b9a73cb1c35bc89c97",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-3MF-07"
+   ],
+   "sourceSha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "edit": "overhang_fan_threshold set to JSON numbers [95, 10, 10]"
+  },
+  {
+   "id": "known-bad/overhang-bare",
+   "set": "known-bad",
+   "path": "known-bad/overhang-bare.3mf",
+   "sha256": "9e7eb8227a4f827b5dfd07fc75e1d5c3e5ab9ecb313067cb24f6343a0fb69af9",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-3MF-07"
+   ],
+   "sourceSha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "edit": "overhang_fan_threshold set to bare strings [\"95\", \"10\", \"10\"]"
+  },
+  {
+   "id": "known-bad/overlap-open-part",
+   "set": "known-bad",
+   "path": "known-bad/overlap-open-part.3mf",
+   "sha256": "025fd9531428c609761f950ec5558797978dcb1f6bff993a762db89287312409",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf",
+   "mode": "--roundtrip --overlap",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-PRT-03"
+   ],
+   "sourceSha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "edit": "the first triangle of 3D/Objects/hackbuild-coin-nfc_2.model removed, so the part is open"
+  },
+  {
+   "id": "known-bad/overlap-stacked-items",
+   "set": "known-bad",
+   "path": "known-bad/overlap-stacked-items.3mf",
+   "sha256": "7a35d5677db8c5eeeda8053eb180aaa8bb633d34641264b8cbf6fc097d7eb790",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/collar-coin/uploads/hackbuild-coin-nfc.3mf",
+   "mode": "--roundtrip --overlap",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-PRT-03"
+   ],
+   "sourceSha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "edit": "the build item of object 4 copied with the same transform, so two coins stack"
+  },
+  {
+   "id": "known-bad/tenon-undefined",
+   "set": "known-bad",
+   "path": "known-bad/tenon-undefined.3mf",
+   "sha256": "b82c11254e6c3532fdedb1a5ae273a86e46567f511c6999fd25abd52ec02dc77",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/tenon/tenon.3mf",
+   "mode": "--export",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-3MF-02",
+    "CHK-3MF-03",
+    "CHK-3MF-07",
+    "CHK-ART-01"
+   ],
+   "stlZip": "known-bad/tenon-stl.zip",
+   "reason": "the named failure is CHK-ART-01 (export completeness); the TENON writer predates the 127-key template, so under --export it also fails CHK-3MF-02 on 37 absent template keys, CHK-3MF-03 on the 7 seed-only vectors outside the template and CHK-3MF-07 on the three kept keys it never wrote (M00-T09 step 1)",
+   "asserts": {
+    "completeness": {
+     "parts": 11,
+     "stlMembers": 7,
+     "first": "tenon-undefined"
+    }
+   }
+  },
+  {
+   "id": "boss/boss-bus-1x4",
+   "set": "boss",
+   "path": "boss/boss-bus-1x4.3mf",
+   "sha256": "83b5eb1ebc73e7ff48365a4c65838afc107bdf288fc2e52198a9c9d3e7e5c90b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-bus-1x4.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-button",
+   "set": "boss",
+   "path": "boss/boss-button.3mf",
+   "sha256": "d9df78aaf1fa365fd212db9d2bb6ff276125854175f87e1c755fe458d2485e2c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-button.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-example-scene",
+   "set": "boss",
+   "path": "boss/boss-example-scene.3mf",
+   "sha256": "3cafd5d6f66ab488144afde5b0f5bdfa62bc925f69ed7ec9a3a1bb660113385e",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-example-scene.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-force",
+   "set": "boss",
+   "path": "boss/boss-force.3mf",
+   "sha256": "23f4ccd401a11e66cfb4a8b11fb432b8bb58253812f03fbe9fd214c2d7142f97",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-force.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-jumper-1x2",
+   "set": "boss",
+   "path": "boss/boss-jumper-1x2.3mf",
+   "sha256": "f3b6abbf5ec1409087a950f8a2a5291a06a31f7af7f57fec2abe1847caafdb00",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-jumper-1x2.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-lamp",
+   "set": "boss",
+   "path": "boss/boss-lamp.3mf",
+   "sha256": "4ac0f177d4eed3e7a5496cbadb886a993330ee3c82ca85ca90fb8dfc68c3689f",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-lamp.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-plate-8x8",
+   "set": "boss",
+   "path": "boss/boss-plate-8x8.3mf",
+   "sha256": "41e4ccbcd8a9950ff8cb49f3beec25e4db288c36f5440c08d7081f209d64c349",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-plate-8x8.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-resistor",
+   "set": "boss",
+   "path": "boss/boss-resistor.3mf",
+   "sha256": "18d6ce0b2411f68de83f0f175e4e4a5997c76bffe4da0f9364fb6752b46e12f3",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-resistor.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-seat-c3mini-press",
+   "set": "boss",
+   "path": "boss/boss-seat-c3mini-press.3mf",
+   "sha256": "becb01b4943a2796429c35598e1df4f90f798a0d130bc0824caa4868e12294e8",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-seat-c3mini-press.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-seat-c3mini-snap",
+   "set": "boss",
+   "path": "boss/boss-seat-c3mini-snap.3mf",
+   "sha256": "cc4c23815d673a4fb82af073c72406ac21fe76b0c69d110535f8be5d236cecaa",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-seat-c3mini-snap.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-seat-pico-press",
+   "set": "boss",
+   "path": "boss/boss-seat-pico-press.3mf",
+   "sha256": "09534b5ef0ba76203ef03c91cef051bb8ca9e2b834b335f8a5f6375d04f56945",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-seat-pico-press.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-seat-pico-snap",
+   "set": "boss",
+   "path": "boss/boss-seat-pico-snap.3mf",
+   "sha256": "44d2bf4e246619ff70d52aee8c4162adec57a2ab1676eaf8eb2eaa8aa4da869b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-seat-pico-snap.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-seat-teensy40-press",
+   "set": "boss",
+   "path": "boss/boss-seat-teensy40-press.3mf",
+   "sha256": "1031e178cbd67c47cf75fecd44e6aec1655e97daa160108087b87274b1e31416",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-seat-teensy40-press.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-seat-teensy40-snap",
+   "set": "boss",
+   "path": "boss/boss-seat-teensy40-snap.3mf",
+   "sha256": "3ba72e39bde3e3e0b056ff66f976ad8c3b320e70df27c1c2435c7a1ce6c43342",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-seat-teensy40-snap.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-slider",
+   "set": "boss",
+   "path": "boss/boss-slider.3mf",
+   "sha256": "a170e2185ff85e4643d939911403b08f35111edf6006ba448c2fa2038713e42f",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-slider.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-touch",
+   "set": "boss",
+   "path": "boss/boss-touch.3mf",
+   "sha256": "456488326ec169c0940775ea43ff87eb2e3da2be5ba594f06c4590c35ac9944e",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-touch.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-wire-s-120",
+   "set": "boss",
+   "path": "boss/boss-wire-s-120.3mf",
+   "sha256": "fc4844a941442cd5f6755b847e9ff6d4e5f3f67d5003d8c86713c8366e8e314a",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-wire-s-120.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-wire-spiral-200",
+   "set": "boss",
+   "path": "boss/boss-wire-spiral-200.3mf",
+   "sha256": "791a3a2b460451f364b4f3016a5de89043c0204af492f5c05ccdaebb7b699b88",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-wire-spiral-200.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-wire-straight-80-cpla",
+   "set": "boss",
+   "path": "boss/boss-wire-straight-80-cpla.3mf",
+   "sha256": "25cc627d28850647459af15a364aab213338e05737a60f2cb065ea7c5730a29b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-wire-straight-80-cpla.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-wire-straight-80",
+   "set": "boss",
+   "path": "boss/boss-wire-straight-80.3mf",
+   "sha256": "7e2c4906c6258bc81c882168c3f89dcf8e54eab0d2ddb218d8e9329d0549c07a",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-wire-straight-80.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "boss/boss-wire-zigzag-120",
+   "set": "boss",
+   "path": "boss/boss-wire-zigzag-120.3mf",
+   "sha256": "284bfaf8839bf02a0ce7c3185ca2b4d70549479b936fd75f8511e96a4f5c5f3d",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/blocks/outputs/boss/examples/boss-wire-zigzag-120.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 90,
+     "absent": 37,
+     "nonTemplateVectors": 7,
+     "nonTemplateVectorLengths": [
+      4
+     ],
+     "templateLengths": {
+      "4": 90
+     }
+    }
+   }
+  },
+  {
+   "id": "owner/coin/hackbuild-coin-nfc",
+   "set": "owner",
+   "path": "gold/hackbuild-coin-nfc.3mf",
+   "sha256": "24ee9c66419ac23eb2075e859bd0191a6431abb1d7d3628eea2372abc854f0c5",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/coin/hackbuild-coin-nfc.3mf",
+   "sameAs": "gold",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/coin/hsl",
+   "set": "owner",
+   "path": "owner/coin/hsl.3mf",
+   "sha256": "6a407afd8e6147d5ea59d1aa702588e2b30819e6ffae98a1bc40ca802ec9b6f8",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/coin/hsl.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/locket/locket-r2-1",
+   "set": "owner",
+   "path": "owner/locket/locket-r2-1.3mf",
+   "sha256": "df56c888519ba777fab06fb71868157a5777046cee180bfbf921523414264904",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/locket/locket-r2 (1).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/all-pivots",
+   "set": "owner",
+   "path": "owner/mechdisplay/all-pivots.3mf",
+   "sha256": "24901ec9086e04e9d5874910921d3a59d11ea92fcc565d958680adb0dbaba3e6",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/all pivots.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/buttons",
+   "set": "owner",
+   "path": "owner/mechdisplay/buttons.3mf",
+   "sha256": "a162e6a44f613bc3d713c3c735eaaa38eb26229624fc40d4a06c7249585a6e20",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/buttons.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/colbar_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/colbar_asm.3mf",
+   "sha256": "9796a49867ef52f7c2677f2ae4c8d9cd45cb9f8d9a963de91cb97c1cf3e84b88",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/colbar_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/link",
+   "set": "owner",
+   "path": "owner/mechdisplay/link.3mf",
+   "sha256": "fe91b41fa0b4f606ac9d7cef2f03ddfeae846d4d38b1b798e902dc0e848d3887",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/link.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/m_base_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/m_base_asm.3mf",
+   "sha256": "d63b176c2c099257ce12917a888310d3940d96acadb1a1e7b1d7207dd4913799",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/m_base_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/m_deck_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/m_deck_asm.3mf",
+   "sha256": "19db0702135dfa52460ab89490f4f499cd15cef12327c07e252485e68bc25501",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/m_deck_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/m_face_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/m_face_asm.3mf",
+   "sha256": "fef85a56be0645aa519e855307bc7a3cfdb03a50fe79571abf3494d45f45d609",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/m_face_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/m_wall_xp_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/m_wall_xp_asm.3mf",
+   "sha256": "2a57e6802387c841ca3007e60aacb513b7c7e239e2e7e69597de8a1dc0dd0485",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/m_wall_xp_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/m_wall_y_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/m_wall_y_asm.3mf",
+   "sha256": "9a4cec7efb0f6ba863b98a7666a66705225ca970a252f294eed4e9064e2af627",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/m_wall_y_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/ogee16-pivot-pin-1",
+   "set": "owner",
+   "path": "owner/mechdisplay/ogee16-pivot-pin-1.3mf",
+   "sha256": "effcec6753ddb3e4e3b30a8035257706b28f9451341947fd09788b7a97c7642b",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/ogee16-pivot-pin (1).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/pivot",
+   "set": "owner",
+   "path": "owner/mechdisplay/pivot.3mf",
+   "sha256": "25f5b6fcf3a331dd10ff47dd48b6daa2a56e3ff8a88bd45e41006d4abcf8dbf7",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/pivot.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/railandlatch",
+   "set": "owner",
+   "path": "owner/mechdisplay/railandlatch.3mf",
+   "sha256": "10417ca175635c4f7e1ba28a8502a1e5a30831b61e0a3dfac43d825320f4bea0",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/railandlatch.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/rods",
+   "set": "owner",
+   "path": "owner/mechdisplay/rods.3mf",
+   "sha256": "d6edb7d03a66b1cd71f02b95ebc9fb0382d01b13a2b0bf9ffbb91ed8e537a926",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/rods.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/rowbar_asm",
+   "set": "owner",
+   "path": "owner/mechdisplay/rowbar_asm.3mf",
+   "sha256": "35e3f813fdb0edec9a3690b105b9faf070727058d0a8380141461730c6ec33b2",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/rowbar_asm.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/mechdisplay/threrest",
+   "set": "owner",
+   "path": "owner/mechdisplay/threrest.3mf",
+   "sha256": "05b0767ab0f8c11f352461b8460ec6248228498256f1d9e22a45f0774fdebea5",
+   "source": "/Users/obsidian/Projects/hackbuild/3d/mechdisplay/threrest.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/body",
+   "set": "owner",
+   "path": "owner/tang-small/body.3mf",
+   "sha256": "b6152634a238bbc8d8b7c3aa713d838c6937f2572e7a1c7351c711d89d61c350",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/body.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/body2",
+   "set": "owner",
+   "path": "owner/tang-small/body2.3mf",
+   "sha256": "1d51ec46e48381208ca3046a82052acd479a17a7cd62cef993046832abb82b88",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/body2.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/face",
+   "set": "owner",
+   "path": "owner/tang-small/face.3mf",
+   "sha256": "cc9a0a1e17c51fa85f85ea13bdde44e761710825afc66ea1fcc9f6368cf7e495",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/face.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/facewithbuttons",
+   "set": "owner",
+   "path": "owner/tang-small/facewithbuttons.3mf",
+   "sha256": "3ff70c15d835031bfe952df071bf6cddae3982d5f24189712b121d46051771cd",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/facewithbuttons.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/neck",
+   "set": "owner",
+   "path": "owner/tang-small/neck.3mf",
+   "sha256": "12c2013a82b19b1f2bd64a881842aaa61f11ab44abc44b86c39652b45df4dd67",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/neck.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/pinkparts",
+   "set": "owner",
+   "path": "owner/tang-small/pinkparts.3mf",
+   "sha256": "c9fd0bfe66218525792bcdbdf586d29d211b5b787d3f3952afe68e29f159a0f4",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/pinkparts.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "owner/tang-small/railcovers",
+   "set": "owner",
+   "path": "owner/tang-small/railcovers.3mf",
+   "sha256": "14f50fb75b42996fff804a5bbd7e749801d02f6e3c52e9ef43cf77cbcf527183",
+   "source": "/Users/obsidian/Projects/hackbuild/instruments/tang-small/railcovers.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": []
+  },
+  {
+   "id": "sprue/sprue_coins",
+   "set": "sprue",
+   "path": "sprue/sprue_coins.3mf",
+   "sha256": "335b111cd19f20fd620c7f38d7845c102590fd99225f0925aabffe6339cd4ada",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/sprue/outputs/sprue/plates/sprue_coins.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 21,
+     "absent": 106,
+     "templateLengths": {
+      "2": 21
+     }
+    },
+    "componentsResolve": true
+   }
+  },
+  {
+   "id": "sprue/sprue_mix",
+   "set": "sprue",
+   "path": "sprue/sprue_mix.3mf",
+   "sha256": "4f785c15fb073527246b9ce8851c6d1f4cb8f06a87cd8c0443a6791e43c7e0bf",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/sprue/outputs/sprue/plates/sprue_mix.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 21,
+     "absent": 106,
+     "templateLengths": {
+      "2": 21
+     }
+    },
+    "componentsResolve": true
+   }
+  },
+  {
+   "id": "sprue/sprue_picks",
+   "set": "sprue",
+   "path": "sprue/sprue_picks.3mf",
+   "sha256": "853086405c4856ced3d958a1c5fe3bd1e1505dfc7ee2662c36d68272dc9c7193",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/sprue/outputs/sprue/plates/sprue_picks.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 21,
+     "absent": 106,
+     "templateLengths": {
+      "2": 21
+     }
+    },
+    "componentsResolve": true
+   }
+  },
+  {
+   "id": "sprue/sprue_picks_phx_backonly",
+   "set": "sprue",
+   "path": "sprue/sprue_picks_phx_backonly.3mf",
+   "sha256": "ba1633d008cef13c0306589bfdf1734b826444134606be3780fdac1fed4bfbae",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-work-directory/benches/sprue/outputs/sprue/plates/sprue_picks_phx_backonly.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "fail",
+   "failsWith": [
+    "CHK-PRT-01"
+   ],
+   "reason": "M00-T10 step 2 expects pass; measured 2026-10-05: part pick_white (3D/Objects/object_3.model object 1) holds 3106 vertices at 2732 distinct positions, and after the coincident vertices merge 475 edges are shared by 4 faces, so CHK-PRT-01 topology fails (not watertight after vertex merge). CHK-3MF-06 passes. The plate is recorded as found, never fixed in place; the SPRUE writer fix belongs to M00-T12",
+   "asserts": {
+    "keySet": {
+     "present": 21,
+     "absent": 106,
+     "templateLengths": {
+      "2": 21
+     }
+    },
+    "componentsResolve": true
+   }
+  },
+  {
+   "id": "legacy/pip-controller/pip",
+   "set": "legacy",
+   "path": "legacy/pip-controller/pip.3mf",
+   "sha256": "bc0135dd5d37a7b195105851366024f2be4dc1f1417f3c291d1a2580200af76f",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/pip-controller/print/pip.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/pip-controller/pip-stick",
+   "set": "legacy",
+   "path": "legacy/pip-controller/pip-stick.3mf",
+   "sha256": "507d7c8c738b35986455002e2b3a43f1eeae0eb6549eadd2f2363f4471165270",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/pip-controller/print/pip-stick.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/toggle/toggle-solo4",
+   "set": "legacy",
+   "path": "legacy/toggle/toggle-solo4.3mf",
+   "sha256": "b746e5cd5c0937ab72a7757618a2ff70a7af0899c44a919fe946621671f0f55b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/toggle/toggle-solo4.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/toggle/toggle-solo8",
+   "set": "legacy",
+   "path": "legacy/toggle/toggle-solo8.3mf",
+   "sha256": "69f49e2f159a912c334d0e36125307c0c8853af55ea74de6292a917c55816c0d",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/toggle/toggle-solo8.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/toggle/toggle-blocks4",
+   "set": "legacy",
+   "path": "legacy/toggle/toggle-blocks4.3mf",
+   "sha256": "5ac8407e979ee4f2656c08232c2eff7f93d5b13fb717a18227fb1847c2e1fac6",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/toggle/toggle-blocks4.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/toggle/toggle-blocks8",
+   "set": "legacy",
+   "path": "legacy/toggle/toggle-blocks8.3mf",
+   "sha256": "a0d6cd8552f43e8114805aa31a92da3ec9724798f3efc95a2dedabb97821266f",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/toggle/toggle-blocks8.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/knuckle/knuckle-clam",
+   "set": "legacy",
+   "path": "legacy/knuckle/knuckle-clam.3mf",
+   "sha256": "50d50cd714704392c0dc19995996c7b1ac3263f31d434b80d4a201567924f2eb",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/knuckle/knuckle-clam.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/knuckle/knuckle-flip",
+   "set": "legacy",
+   "path": "legacy/knuckle/knuckle-flip.3mf",
+   "sha256": "94acbdbb3cde39cfdaa78bed5e2fa2d31f92e2fe95ffca7b7609e7a2855580d7",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/knuckle/knuckle-flip.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/sparger-w/spargerw-plate-a-tube",
+   "set": "legacy",
+   "path": "legacy/sparger-w/spargerw-plate-a-tube.3mf",
+   "sha256": "71d7bd21509102eeb7002fbb27e0ae2161ce605011310a757b9c1ece326c05cf",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/sparger-w/sparger-w/3mf/spargerw-plate-A-tube.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/sparger-w/spargerw-plate-b-head-and-bottle",
+   "set": "legacy",
+   "path": "legacy/sparger-w/spargerw-plate-b-head-and-bottle.3mf",
+   "sha256": "1550eadc1c345e2e8d4984375aabe600166e9ad3881ee33acd276830d1e116d6",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/sparger-w/sparger-w/3mf/spargerw-plate-B-head-and-bottle.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/sparger-w/spargerw-plate-c-nozzle-and-pump",
+   "set": "legacy",
+   "path": "legacy/sparger-w/spargerw-plate-c-nozzle-and-pump.3mf",
+   "sha256": "08ae456c573ae27dfe7a10a9e0961bfc42a8f6b6e42cbff68bda17e5531093eb",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/sparger-w/sparger-w/3mf/spargerw-plate-C-nozzle-and-pump.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/sparger-w/spargerw-plate-d-gasket-and-grommet-tpu",
+   "set": "legacy",
+   "path": "legacy/sparger-w/spargerw-plate-d-gasket-and-grommet-tpu.3mf",
+   "sha256": "d4e9a15309f4948055200b3cafe08c42bb62b56076e269195c99b4b6b85aae92",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/sparger-w/sparger-w/3mf/spargerw-plate-D-gasket-and-grommet-TPU.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/plates/plate-01-of-03_all-filaments",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/plates/plate-01-of-03_all-filaments.3mf",
+   "sha256": "8a04626f08253602ceba999799896fa552a82b80ab9a26be85f18895a31435ca",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/plates/plate-01-of-03_all-filaments.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/plates/plate-02-of-03_all-filaments",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/plates/plate-02-of-03_all-filaments.3mf",
+   "sha256": "0e07cd882a7b6fb415a4e683c601d6d1673001755da6789926b2f7bdc4434711",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/plates/plate-02-of-03_all-filaments.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/plates/plate-03-of-03_all-filaments",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/plates/plate-03-of-03_all-filaments.3mf",
+   "sha256": "09c55d1cc221a8067f4e42e7fb61031749e0cfc0d59dfd2a5cbc321888484604",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/plates/plate-03-of-03_all-filaments.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_bin-freebies-free-take-one",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_bin-freebies-free-take-one.3mf",
+   "sha256": "e2ae71d7b854ea1502533be79fb014d5454ad0539b9bc71990899ce3560a8d2b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_bin-freebies-free-take-one.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_bin-stickers-stickers",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_bin-stickers-stickers.3mf",
+   "sha256": "90c6a8f6448b652fe5bb5907b498efd08d671111da8473a49055851ebbbcac1c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_bin-stickers-stickers.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-donate",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-donate.3mf",
+   "sha256": "693aabb438274a03d6b9d7071e69905f7db21a8e64d35a5d057528dfaa492a76",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_qr-tile-donate.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-waiver",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-waiver.3mf",
+   "sha256": "1916a5f2c5a9ebc9441d3dd2da8c0ba6f0ca5e659dad86f371b2ee1517df3c27",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_qr-tile-waiver.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-website",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-website.3mf",
+   "sha256": "bebb262fb7b34f7c5eab2ff7fe6d67e402227aa4f27a7a01b30acba23a29ca72",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_qr-tile-website.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_sheet-rail-bottom-letter-about-the-lab",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_sheet-rail-bottom-letter-about-the-lab.3mf",
+   "sha256": "987a400bf97e2623e2b368cda5f7f277fb2cce52a9d4353bf5c835b7a471fccc",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_sheet-rail-bottom-letter-about-the-lab.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_sheet-rail-top-letter-about-the-lab",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_sheet-rail-top-letter-about-the-lab.3mf",
+   "sha256": "e9e99f0c7b46c6de8cde3b99cc4bb62fad0cf0253b72ace37dec98671d54e409",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x01_sheet-rail-top-letter-about-the-lab.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x02_display-shelf-9in-made-here",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x02_display-shelf-9in-made-here.3mf",
+   "sha256": "5d065b323957b7266573dd46fb4491cd500a7453607720fe0313387dec73fa0c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x02_display-shelf-9in-made-here.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x18_rail-clip",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x18_rail-clip.3mf",
+   "sha256": "ff76e416f3bee77edc2890f760187141e8c72e1c4f7d3a7e0ac776c6d804f182",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22/print/x18_rail-clip.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/plates/plate-01-of-03_all-filaments",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/plates/plate-01-of-03_all-filaments.3mf",
+   "sha256": "265400bba004a861563ac7504d5a0f17dbb2abf81bd644850f2bbdc39ea1c0ed",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/plates/plate-01-of-03_all-filaments.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/plates/plate-02-of-03_all-filaments",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/plates/plate-02-of-03_all-filaments.3mf",
+   "sha256": "12323195b362516f7f09ce099f13d33459d041e36d37bc192e71094b0aca1de8",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/plates/plate-02-of-03_all-filaments.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/plates/plate-03-of-03_all-filaments",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/plates/plate-03-of-03_all-filaments.3mf",
+   "sha256": "1657955001c3491010288f732c4eff821cd95d7c2aa1ad1439f95432e506e55c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/plates/plate-03-of-03_all-filaments.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_bin-freebies-free-take-one",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_bin-freebies-free-take-one.3mf",
+   "sha256": "d0455bb4ade33623fb5350f30ab5d79d3c39a0321b698f24e6d6c5540d488d27",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_bin-freebies-free-take-one.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_bin-stickers-stickers",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_bin-stickers-stickers.3mf",
+   "sha256": "0aaff25fba66505e426816c2ea7b03173a18ebabbce76d65faa026406e3b4abf",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_bin-stickers-stickers.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_qr-tile-donate",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_qr-tile-donate.3mf",
+   "sha256": "248fd201e9e38dfb5ef1ded86b9da2477c937d5ecc1dc97aab0fcac5670cae9a",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_qr-tile-donate.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_qr-tile-waiver",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_qr-tile-waiver.3mf",
+   "sha256": "4cfe00607cfacbed0127294f2d843e4bde1653208f72759ac9274176add66322",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_qr-tile-waiver.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_qr-tile-website",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_qr-tile-website.3mf",
+   "sha256": "fc223906130cfbb32da28f4dffb0a335caa5dde60c70b3f7f06c23dc98c6fe3d",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_qr-tile-website.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_sheet-rail-bottom-letter-about-the-lab",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_sheet-rail-bottom-letter-about-the-lab.3mf",
+   "sha256": "bd2036bc6f4c74815412c11b8747dfcfd28226ae5aabba02ef6430ba2437057f",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_sheet-rail-bottom-letter-about-the-lab.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_sheet-rail-top-letter-about-the-lab",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x01_sheet-rail-top-letter-about-the-lab.3mf",
+   "sha256": "57a094ae57ea25881b91917821ce40ff43df876fa6e90c6749aea2a4bfbf2f0c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x01_sheet-rail-top-letter-about-the-lab.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x02_display-shelf-9in-made-here",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22-1/print/x02_display-shelf-9in-made-here.3mf",
+   "sha256": "ee3afb127f8a7d55c9267f0dc1ed6938881011d3cd97daa01cddfe5bd1e2b466",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_custom_2026-09-22 (1)/print/x02_display-shelf-9in-made-here.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_bin-stickers-stickers",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_bin-stickers-stickers.3mf",
+   "sha256": "eeed7630beb4c797db0df18aa15fafb22b55fc859f4ea5b2029756054db290ab",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_bin-stickers-stickers.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_card-frame-quarter-start-here",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_card-frame-quarter-start-here.3mf",
+   "sha256": "2cc87960dfc32b71cf0e51cb25a11f32d04397cbaedc2573524581fcaa5a287c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_card-frame-quarter-start-here.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_card-frame-quarter-waiver",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_card-frame-quarter-waiver.3mf",
+   "sha256": "a3ad2ebc7d6619594990487e3e1de1c869565ea27d9af408c75c628f1599b87e",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_card-frame-quarter-waiver.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_coin-rail-x4-44mm-challenge-coins",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_coin-rail-x4-44mm-challenge-coins.3mf",
+   "sha256": "181378bd370f412ed0bed2cfe5ad713a4cb1cf892b71729690ebd633c2d8952e",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_coin-rail-x4-44mm-challenge-coins.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_display-shelf-8in-made-here",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_display-shelf-8in-made-here.3mf",
+   "sha256": "da3d8999b9783c1fe5273644ff67f0427768a8b3a76f9e3c801d49797814f0d8",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_display-shelf-8in-made-here.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_sheet-rail-bottom-letter-about-the-lab",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_sheet-rail-bottom-letter-about-the-lab.3mf",
+   "sha256": "dd4bb6e2b6034fab965d0db37320ea2939d1c6b60f7efad4d4581c68c9c24d59",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_sheet-rail-bottom-letter-about-the-lab.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_sheet-rail-top-letter-about-the-lab",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x01_sheet-rail-top-letter-about-the-lab.3mf",
+   "sha256": "f8b94e38f53172d37a30c1a38555c0bf395e14c9436088ce6abe4de1f75129d4",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x01_sheet-rail-top-letter-about-the-lab.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "legacy/cotter/cotter-kit_today_2026-09-21/print/x14_rail-clip",
+   "set": "cotter",
+   "path": "legacy/cotter/cotter-kit_today_2026-09-21/print/x14_rail-clip.3mf",
+   "sha256": "a9f9723ed2c28cf9f8fa80a243009af47f7468bb0a7179b6fa3f5d9465c86b3e",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/cotter/unzipped/cotter-kit_today_2026-09-21/print/x14_rail-clip.3mf",
+   "mode": "--legacy --overlap",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": []
+  },
+  {
+   "id": "roundtrip/baffle-wire/generator/baffle-wire-1",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/baffle-wire/baffle-wire-1.3mf",
+   "sha256": "98c752cc6e552f694521a2a40fef32d81c26fc01816680287742bf4b4f86b480",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/baffle/baffle-wire (1).3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": [],
+   "project": "baffle-wire",
+   "role": "generator"
+  },
+  {
+   "id": "roundtrip/baffle-wire/save/baffle-wire",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/baffle-wire/baffle-wire.3mf",
+   "sha256": "0449ff256b3ccb5521468e8d4df4a66acc39442da38c15e49c6321d52d6c0667",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/baffle/baffle-wire.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "baffle-wire",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/baffle-pre-r2/save/baffle-2",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/baffle-pre-r2/baffle-2.3mf",
+   "sha256": "4b067e103a43e900a3badd29581a17fafb8632b2369d7e126d0f3f1de7b88e37",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/baffle/baffle (2).3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "baffle-pre-r2",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/sash/generator/sash-2",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/sash/sash-2.3mf",
+   "sha256": "f2d1f4871ecff5b912b348803f73e25b1271712e417f0c110ed323fb9770bed7",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/sash/sash (2).3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": [],
+   "project": "sash",
+   "role": "generator"
+  },
+  {
+   "id": "roundtrip/sash/save/sash-3",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/sash/sash-3.3mf",
+   "sha256": "59a80eca5334c9bb1badb42c517751d50ccd8f2fe5e02058cc07e861cfc0902a",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/sash/sash (3).3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "sash",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/sash/save/sash-4",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/sash/sash-4.3mf",
+   "sha256": "3ccaf4cb980e62621ee1b93fcc8b32eec2025b516deda9880cb9a2b5e3ccfce2",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/sash/sash (4).3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "sash",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/cotter-qr-tile/generator/x01_qr-tile-waiver",
+   "set": "roundtrip",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-waiver.3mf",
+   "sha256": "1916a5f2c5a9ebc9441d3dd2da8c0ba6f0ca5e659dad86f371b2ee1517df3c27",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/3mf/cotter-kit_custom_2026-09-22/print/x01_qr-tile-waiver.3mf",
+   "sameAs": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_qr-tile-waiver",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": [],
+   "project": "cotter-qr-tile",
+   "role": "generator"
+  },
+  {
+   "id": "roundtrip/cotter-qr-tile/save/x01_qr-tile-waiver",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/cotter-qr-tile/x01_qr-tile-waiver.3mf",
+   "sha256": "e36bb3bc1b02e7c4fe7dd245b511e4d5fe3b9745a74deca99e0e28e6a7b7bc6e",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/3mf/cotter-kit_custom_2026-09-22 (1)/print/x01_qr-tile-waiver.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "cotter-qr-tile",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/cotter-bin/generator/x01_bin-freebies-free-take-one",
+   "set": "roundtrip",
+   "path": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_bin-freebies-free-take-one.3mf",
+   "sha256": "e2ae71d7b854ea1502533be79fb014d5454ad0539b9bc71990899ce3560a8d2b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/3mf/cotter-kit_custom_2026-09-22/print/x01_bin-freebies-free-take-one.3mf",
+   "sameAs": "legacy/cotter/cotter-kit_custom_2026-09-22/print/x01_bin-freebies-free-take-one",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": [],
+   "project": "cotter-bin",
+   "role": "generator"
+  },
+  {
+   "id": "roundtrip/cotter-bin/save/x02_display-shelf-9in-made-here",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/cotter-bin/x02_display-shelf-9in-made-here.3mf",
+   "sha256": "a3111c9c88f5b64bf17685b6932c38e348e53af1f5bdf89317f0e0644015122a",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-baffle-inlay-coin/3mf/cotter-kit_custom_2026-09-22 (1)/print/x02_display-shelf-9in-made-here.3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "cotter-bin",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/knurl/generator/knurl",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/knurl/knurl.3mf",
+   "sha256": "2b6c5cbd98fd824fa9f99c860631226eee50091276436ee4c7999120f1ea9437",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-ogee-stipple-mech/knurl/knurl.3mf",
+   "mode": "--legacy",
+   "target": "bbs",
+   "expect": "legacy",
+   "failsWith": [
+    "CHK-3MF-06",
+    "CHK-PRT-01"
+   ],
+   "project": "knurl",
+   "role": "generator",
+   "reason": "the KNURL app export carries no Metadata/project_settings.config (CHK-3MF-06 package rule) and four meshes that are open after vertex merge (tray, lid, wheel and star bodies, CHK-PRT-01); recorded, never fixed in place"
+  },
+  {
+   "id": "roundtrip/knurl/save/knurl-1",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/knurl/knurl-1.3mf",
+   "sha256": "d95fe4f337603dcbb9c0b5fcdbfb68e79cc7a26c2aa92e36c9d3eeca3851d70b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-ogee-stipple-mech/knurl/knurl (1).3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "knurl",
+   "role": "save"
+  },
+  {
+   "id": "roundtrip/knurl/save/knurl-5",
+   "set": "roundtrip",
+   "path": "owner/roundtrip/knurl/knurl-5.3mf",
+   "sha256": "e45a6d75a7473b8758d7a16998a434777467ae28f157956378a6eeb5da478b5c",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-ogee-stipple-mech/knurl/knurl (5).3mf",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "project": "knurl",
+   "role": "save"
+  },
+  {
+   "id": "owner/downloads/haft-3",
+   "set": "downloads",
+   "path": "owner/downloads/haft-3.3mf",
+   "sha256": "02c1c6ef9b52e8888cd2ec8c32f892eb70bc5f85d48815a2ec2ed58599161988",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/haft/haft (3).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/haft-5",
+   "set": "downloads",
+   "path": "owner/downloads/haft-5.3mf",
+   "sha256": "91a88ac454c636694135521cca995d9b8f6ef40ac8e34dcfb5b4b6a3f59cf18d",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/haft/haft (5).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/toggle-solo4",
+   "set": "downloads",
+   "path": "owner/downloads/toggle-solo4.3mf",
+   "sha256": "19c1c8b34118e01461a9bb2073ffaf2fdccfeb5d963fca2b9a2edec9300b52bf",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/toggle/toggle-solo4.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/tenon-1",
+   "set": "downloads",
+   "path": "owner/downloads/tenon-1.3mf",
+   "sha256": "de697410e5927e821ba7fc7eb0db4155782cdbab51e979f999c61a26befa4c26",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/tenon/tenon (1).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/cask_cap_hackbuild-1",
+   "set": "downloads",
+   "path": "owner/downloads/cask_cap_hackbuild-1.3mf",
+   "sha256": "fa2251a71d3d5b9f68b02424676bd5fe720115b4611f207559f0b40ac3952a03",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/cask/cask_cap_hackbuild (1).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/cask5_cap_hackbuild_large",
+   "set": "downloads",
+   "path": "owner/downloads/cask5_cap_hackbuild_large.3mf",
+   "sha256": "a21572fdc9af3d6ab5e5eac284005527d61fa067b9bb164a9ee70d3bf5b39b40",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/cask/cask5_cap_hackbuild_large.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/casting-call-slate",
+   "set": "downloads",
+   "path": "owner/downloads/casting-call-slate.3mf",
+   "sha256": "b9bc1d41c70bbdd9dc8d25402f10afc776bc820a88fad5d13f70918675b6e8e9",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/slate/casting-call-slate.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/table-read-slate",
+   "set": "downloads",
+   "path": "owner/downloads/table-read-slate.3mf",
+   "sha256": "7d57e14792db204abac94dc99fe12b2c4ec0a305402eb7328ae8c4d623a6aed3",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/slate/table-read-slate.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/locket-r2-1",
+   "set": "downloads",
+   "path": "owner/downloads/locket-r2-1.3mf",
+   "sha256": "d61c3037cb025981bf6c35782c9cedefeeab3dcf67c07dab11b5e006b4f9d47b",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/locket/locket-r2 (1).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/feeler-ladder-2",
+   "set": "downloads",
+   "path": "owner/downloads/feeler-ladder-2.3mf",
+   "sha256": "78436fb9e8175222833163f6b703699c98ff665bcd2bc44694e1297214707300",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-gudgeon-tang-keyway/feeler/feeler-ladder (2).3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "owner/downloads/gib-finger-rigid-200x14",
+   "set": "downloads",
+   "path": "owner/downloads/gib-finger-rigid-200x14.3mf",
+   "sha256": "f5a83cb1f988c6bab5b0b5553aebcf3ef0032c7b39f1f248db717bd179d35157",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-gudgeon-tang-keyway/gib/gib-finger-rigid-200x14.3mf",
+   "mode": "--roundtrip --json",
+   "target": "bbs",
+   "expect": "parse",
+   "failsWith": [],
+   "asserts": {
+    "keySet": {
+     "present": 127,
+     "absent": 0
+    },
+    "allTemplateAtN": true,
+    "sliceInfo": {
+     "OrcaSlicer-Version": "2.3.2"
+    }
+   }
+  },
+  {
+   "id": "tenon-known-good",
+   "set": "tenon-known-good",
+   "path": "owner/downloads/tenon-1.3mf",
+   "sha256": "de697410e5927e821ba7fc7eb0db4155782cdbab51e979f999c61a26befa4c26",
+   "source": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-pip-latest/tenon/tenon (1).3mf",
+   "sameAs": "owner/downloads/tenon-1",
+   "mode": "--roundtrip",
+   "target": "bbs",
+   "expect": "pass",
+   "failsWith": [],
+   "asserts": {
+    "names": {
+     "verdict": "pass",
+     "objects": 11
+    }
+   }
+  }
+ ]
+}

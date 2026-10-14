@@ -1,0 +1,77 @@
+# One tag, two registries (hackbuild-fab REPOS.md section 10.3, D-027).
+# Nothing runs here until the owner clears D-037: the npm org exists, the
+# first npm publish is done by hand, and release.yml is registered as the
+# trusted publisher on npmjs.com and on pypi.org. No token secret exists.
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: tag equals both package versions
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          js=$(node -p 'require("./js/package.json").version')
+          py=$(sed -n 's/^version = "\(.*\)"$/\1/p' py/pyproject.toml)
+          echo "tag $tag, js $js, py $py"
+          test "$tag" = "$js" && test "$tag" = "$py"
+  ci:
+    needs: check
+    uses: ./.github/workflows/ci.yml
+  npm:
+    needs: ci
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+      - uses: astral-sh/setup-uv@v6
+      - run: npm ci --prefix js && npm run build --prefix js && npm test --prefix js && npm audit signatures --prefix js
+      # Node 22.18.0 ships npm 10, which lacks trusted publishing; 11.5.1 is the floor,
+      # 11.21.0 the latest 11.x on the registry on 2026-10-05.
+      - run: npm install -g npm@11.21.0
+      - run: npm publish --provenance --access public
+        working-directory: js
+  pypi:
+    needs: ci
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv build --project py --out-dir py/dist
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: py/dist
+  github-release:
+    needs: [npm, pypi]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: changelog section as the release body
+        run: |
+          ver="${GITHUB_REF_NAME#v}"
+          awk -v v="$ver" '$0 ~ "^## " v "( |$)" {on=1; next} /^## / && on {exit} on' CHANGELOG.md > body.md
+          node tools/lint-voice.mjs body.md
+      - run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file body.md
+        env:
+          GH_TOKEN: ${{ github.token }}

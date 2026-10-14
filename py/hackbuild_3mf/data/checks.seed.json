@@ -1,0 +1,208 @@
+{
+  "source": "hackbuild-fab packages/checks/seed/checks.seed.json, rows for the ids the validators emit",
+  "checks": [
+    {
+      "id": "CHK-PRT-01",
+      "version": "1.0.1",
+      "title": "every part is a closed manifold, two faces per undirected edge",
+      "appliesTo": {
+        "level": "part"
+      },
+      "severity": "block",
+      "precondition": true,
+      "needs": [
+        "mesh"
+      ],
+      "legalKind": "boolean",
+      "origin": {
+        "project": "COLLAR 2026-08",
+        "date": "2026-08",
+        "what": "directed-edge balancing passed coincident faces; trimesh disagreed",
+        "knowledge": "knowledge:01-invariants#mesh-and-manifoldness",
+        "evidence": null,
+        "also": [
+          {
+            "project": "CRESSET 2026-08-30",
+            "date": "2026-08-30",
+            "what": "the shipped example carried four-face edges while the README claimed 0; PLINTH fixDiag gives 0",
+            "numbers": {
+              "fourFaceEdges": "40 + 16 + 1",
+              "qualifier": "computed from the shipped 3MF (CHECKS.md 7.7)"
+            },
+            "evidence": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/cresset/cresset-132mm.3mf"
+          }
+        ]
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-PRT-03",
+      "version": "2.0.0",
+      "title": "parts of one object never overlap and sum to the solid",
+      "appliesTo": {
+        "level": "assembly"
+      },
+      "severity": "block",
+      "precondition": true,
+      "needs": [
+        "mesh"
+      ],
+      "legalKind": "interval",
+      "origin": {
+        "project": "COLLAR 2026-08",
+        "date": "2026-08",
+        "what": "validate_3mf --overlap",
+        "knowledge": "knowledge:01-invariants#mesh-and-manifoldness",
+        "evidence": null
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-3MF-01",
+      "version": "1.0.1",
+      "title": "Application tag starts with BambuStudio- or OrcaSlicer-",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "set",
+      "origin": {
+        "project": "challenge-coin 2026-08",
+        "date": "2026-08",
+        "what": "colours silently dropped",
+        "knowledge": "knowledge:03-diagnostics#printing",
+        "evidence": null
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-3MF-02",
+      "version": "1.0.1",
+      "title": "every per-filament key exactly N long",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "interval",
+      "origin": {
+        "project": "COLLAR v4 2026-08",
+        "date": "2026-08",
+        "what": "filament list collapsed to one",
+        "knowledge": "knowledge:01-invariants#3mf-and-export",
+        "evidence": null
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-3MF-03",
+      "version": "1.0.1",
+      "title": "no printer or process scoped keys; preset names only",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "boolean",
+      "origin": {
+        "project": "STYLUS 2026-08",
+        "date": "2026-08",
+        "what": "layer_height in project_settings crashed Flash Studio",
+        "knowledge": "knowledge:kernels/3mf-dialect#the-key-template",
+        "evidence": null
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-3MF-06",
+      "version": "2.0.0",
+      "title": "every component p:path resolves to a model part in the package, other than the root model, and the referenced object id exists in that part",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "boolean",
+      "origin": {
+        "project": "CASK 2026-09",
+        "date": "2026-09",
+        "what": "self-referential p:path never resolved; object loaded with no volumes; empty plate, no error",
+        "knowledge": "knowledge:kernels/3mf-dialect#ppath-on-a-root-component-the-empty-plate-bug",
+        "evidence": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/cask/cask_cap_hackbuild.3mf"
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-3MF-07",
+      "version": "2.0.0",
+      "title": "per-filament vectors in project_settings.config have one element per filament and each element has the key's per-slot type; overhang_fan_threshold elements are percent strings matching ^[0-9]+%$, never bare numbers or nil",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "boolean",
+      "origin": {
+        "project": "CASK 2026-09",
+        "date": "2026-09",
+        "what": "Flash Studio warned on the enum default",
+        "knowledge": "knowledge:kernels/3mf-dialect#two-more-key-facts-from-cask",
+        "evidence": "/Users/obsidian/Projects/hackbuild/fab-knowledge/evidence/x/downloads/dl-cases/cask/cask_cap_hackbuild.3mf"
+      },
+      "status": "seed"
+    },
+    {
+      "id": "CHK-ART-01",
+      "version": "1.0.0",
+      "title": "export completeness: unique resolved object names, no undefined, null or NaN in part names; STL entry count equals object count",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "boolean",
+      "origin": {
+        "project": "TENON 2026-09",
+        "date": "2026-09",
+        "what": "five objects named tenon-undefined and four STLs lost to one overwritten name",
+        "evidence": "tools/corpus/3mf/known-bad/tenon-undefined.3mf"
+      },
+      "status": "entered",
+      "enteredBy": "M04-T12"
+    },
+    {
+      "id": "CHK-3MF-08",
+      "version": "1.0.0",
+      "title": "no object that holds a conductor body or shares a face with one has interlocking_beam on, whether set per object or inherited from the project",
+      "appliesTo": {
+        "level": "artifact"
+      },
+      "severity": "block",
+      "needs": [
+        "3mf"
+      ],
+      "legalKind": "boolean",
+      "origin": {
+        "project": "research 2026-10",
+        "date": "2026-10",
+        "what": "Orca, Prusa and Cura generate interlocking beams where two filaments meet and interleave them up to interlocking_depth cells deep, which eats a conductor's cross section; no printed failure on record, loss inferred (research/3dp-landscape.md section 3 and section 11 idea 8)",
+        "evidence": "/Users/obsidian/Projects/hackbuild/fab-knowledge/research/3dp-landscape.md"
+      },
+      "status": "entered",
+      "enteredBy": "M05-T20"
+    }
+  ]
+}

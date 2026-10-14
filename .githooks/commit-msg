@@ -1,0 +1,30 @@
+#!/bin/sh
+# house rules for commit messages: RULES.md Attribution and Git conventions
+# usage: commit-msg <message-file>. CI runs it once per commit in the pushed range.
+# Dashes, emoji, AI credit (tools/ai-names.json) and the Language rules are
+# tools/lint-voice.mjs --kind commit, the one implementation (D-001, D-004);
+# this script keeps the subject form and the trailer rule.
+f="$1"
+root=$(cd "$(dirname "$0")/.." && pwd)
+msg=$(grep -v '^#' "$f")
+subj=$(printf '%s\n' "$msg" | sed -n '1p')
+fail() { echo "commit-msg: $1" >&2; exit 1; }
+printf '%s\n' "$msg" | grep -Eiq '^[[:space:]]*[a-z-]+-(by|with):' && fail "trailers are not allowed"
+command -v node >/dev/null 2>&1 || fail "node is needed to run tools/lint-voice.mjs on the message"
+hits=$(printf '%s\n' "$msg" | node "$root/tools/lint-voice.mjs" --stdin --kind commit)
+status=$?
+if [ "$status" -ne 0 ]; then
+  printf '%s\n' "$hits" >&2
+  printf '%s\n' "$hits" | grep -q ' ai-credit ' && fail "no ai or llm credit"
+  printf '%s\n' "$hits" | grep -Eq ' (emoji|sparkle) ' && fail "no emoji or dingbats"
+  printf '%s\n' "$hits" | grep -q ' dash ' && fail "no em or en dashes"
+  fail "lint-voice rejected the message"
+fi
+[ -n "$subj" ] || fail "subject is empty"
+[ ${#subj} -lt 60 ] || fail "subject is ${#subj} characters, keep it under 60"
+printf '%s' "$subj" | grep -Eq '^[A-Z]' && fail "subject starts with a capital, start it lowercase"
+printf '%s' "$subj" | grep -q '!' && fail "no exclamation marks"
+printf '%s' "$subj" | grep -Eq '[.,;:]$' && fail "subject ends in punctuation, drop it"
+printf '%s' "$subj" | grep -Eq '^(feat|fix|chore|docs|refactor|test|perf|build|ci|style|revert)(\(|!|:)' && fail "no type word in the subject"
+printf '%s\n' "$msg" | grep -Eq '(^|[^-])-- ' && fail "no double hyphen as a dash"
+exit 0

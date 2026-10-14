@@ -1,0 +1,79 @@
+name: ci
+on:
+  push:
+  pull_request:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  js:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: astral-sh/setup-uv@v6
+      - run: npm ci --prefix js
+      - run: npm run build --prefix js
+      - run: npm run check:presets --prefix js
+      # the agreement block of validate.test.ts runs py/ through uv
+      - run: npm test --prefix js
+  py:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: astral-sh/setup-uv@v6
+      - run: npm ci --prefix js && npm run build --prefix js
+      - run: uv run --project py pytest
+  corpus:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: astral-sh/setup-uv@v6
+      - run: npm ci --prefix js && npm run build --prefix js
+      # both validators over corpus/manifest.json; a row outside expectation or a js and py disagreement exits 1
+      - run: uv run --project py corpus/run.py
+  bytes:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        tz: [UTC, America/Phoenix]
+    env:
+      TZ: ${{ matrix.tz }}
+      SOURCE_DATE_EPOCH: "1791072000"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: astral-sh/setup-uv@v6
+      - run: npm ci --prefix js && npm run build --prefix js
+      - run: npx --prefix js vitest run --root js test/bytes.test.ts
+      - run: uv run --project py pytest py/tests/test_bytes.py py/tests/test_agreement.py
+  house-rules:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: node --test tools/test/commit-msg.test.mjs tools/test/lint-voice.test.mjs tools/test/hooks-install.test.mjs tools/test/lint-authors.test.mjs tools/test/import-from-fab.test.mjs
+      # lint-voice reads every .3mf and .zip through js/dist and blocks each
+      # one as not scanned when the reader is not built
+      - run: npm ci --prefix js && npm run build --prefix js
+      - run: node tools/lint-voice.mjs
+      - name: lint-commits
+        env:
+          BEFORE: ${{ github.event.before }}
+          BASE_REF: ${{ github.base_ref }}
+        run: node tools/lint-commits.mjs
+      - run: node tools/lint-authors.mjs

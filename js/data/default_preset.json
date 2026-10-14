@@ -1,0 +1,13 @@
+{
+  "note": "The machine preset a build with no printer writes: id, nozzle and slicer names of one row of hackbuild-fab packages/profile/data/machines.json, copied so the package stands alone (D-027). tools/py/test/test_agreement.py holds it equal to that row.",
+  "machine": "ffc5p",
+  "id": "ffc5p_20260819",
+  "nozzle": 0.4,
+  "slicer": {
+    "app": "BambuStudio-01.10.01.50",
+    "printer": "Flashforge Creator 5 Pro 0.4 nozzle",
+    "process": "0.24mm Standard @FF C5",
+    "filament": "Generic {TYPE} @FF C5P",
+    "bedType": "Textured PEI Plate"
+  }
+}

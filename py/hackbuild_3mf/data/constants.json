@@ -1,0 +1,2421 @@
+{
+  "note": "Named constants with provenance (PROFILE.md 10). Seed rows that move to the catalog are listed under moved and return E_REF.",
+  "constants": [
+    {
+      "id": "28byj48.halfStepsPerRev",
+      "value": 4075.7728,
+      "unit": "half steps",
+      "provenance": {
+        "tier": "vendor",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.28byj48.halfStepsPerRev (DETENT, SLUG); equals the gear train 63.68395 x 64 half steps; no coupon recorded (PROFILE.md 2.4)"
+      }
+    },
+    {
+      "id": "fingertip.mm.lo",
+      "value": 10,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.fingertip.mm [10, 16] (COFFER), lo end of the range"
+      }
+    },
+    {
+      "id": "fingertip.mm.hi",
+      "value": 16,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.fingertip.mm [10, 16] (COFFER), hi end of the range"
+      }
+    },
+    {
+      "id": "plate.minArea",
+      "value": 120,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.plate.minArea (COFFER finger-scale gate); COFFER finger-scale gate"
+      }
+    },
+    {
+      "id": "plate.minInscribed",
+      "value": 4.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.plate.minInscribed (COFFER); COFFER (polylabel)"
+      }
+    },
+    {
+      "id": "despeckle.factor",
+      "value": 0.35,
+      "unit": "fraction of a min-feature disc",
+      "provenance": {
+        "tier": "inferred",
+        "method": "failure",
+        "date": "2026-10-04",
+        "source": "COLLAR v3: originals/collar/files/collar.html lines 1161 to 1166 (minPx = max(1, round(pi (minF k / 2)^2 x 0.35)); a dot that is the min feature has to survive, or despeckle eats every full stop); same factor in originals/inlay/files/skill/print-forge/assets/bench/part2.js line 209; seed constants.despeckle.factor; D-145; seed tier measured has no coupon (PROFILE.md 2.4)"
+      }
+    },
+    {
+      "id": "livingHinge.maxDegPerRow",
+      "value": 13,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.livingHinge.maxDegPerRow (TUMBLER); TUMBLER"
+      }
+    },
+    {
+      "id": "buckledBeam.riseOverT",
+      "value": 2.31,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.buckledBeam.riseOverT (TUMBLER); TUMBLER; CHK-KEY-04 uses the FE, never this constant"
+      }
+    },
+    {
+      "id": "capsule.archBelowDiameters",
+      "value": 2,
+      "unit": "capsule diameters",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "seed constants.capsule.archBelowDiameters (SLUG 6 trials); SLUG, D-136; seed tier measured has no coupon (PROFILE.md 2.4)"
+      }
+    },
+    {
+      "id": "3mf.coincidenceInset",
+      "value": 0.001,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "D-070, 1 micron edge-normal inset"
+      }
+    },
+    {
+      "id": "3mf.pinchInset",
+      "value": 0.02,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "COTTER applyArt HAIR; D-070"
+      }
+    },
+    {
+      "id": "3mf.interlockingBeamWidth",
+      "value": 0.8,
+      "unit": "mm",
+      "provenance": {
+        "tier": "vendor",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "OrcaSlicer src/libslic3r/PrintConfig.cpp lines 4792 to 4870, default of interlocking_beam_width (/Users/obsidian/Projects/hackbuild/fab-knowledge/research/3dp-landscape.md lines 324 to 336); what an object inherits when neither it nor the project sets the key; read by CHK-3MF-08 for its loss quote (M05-T20)"
+      }
+    },
+    {
+      "id": "3mf.interlockingDepth",
+      "value": 2,
+      "unit": "cells",
+      "provenance": {
+        "tier": "vendor",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "OrcaSlicer src/libslic3r/PrintConfig.cpp lines 4792 to 4870, default of interlocking_depth (/Users/obsidian/Projects/hackbuild/fab-knowledge/research/3dp-landscape.md lines 324 to 336); what an object inherits when neither it nor the project sets the key; read by CHK-3MF-08 for its loss quote (M05-T20); the cell size is not in the survey, so the loss bound takes one cell as one beam width (inferred)"
+      }
+    },
+    {
+      "id": "geom.sliverMin.n04",
+      "value": 0.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-04",
+        "source": "handoff/seed/3mf/demo_coin.py header"
+      }
+    },
+    {
+      "id": "key.flexGapFloor",
+      "value": 1.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "PIP 2026-09, pip-controller bench/part1.html line 238 (\"never under 1.2 mm\"), CHECKS.md CHK-KEY-01 legal (35 to 50 percent of cone height, floor 1.2, D-241); the floor read by the CHK-KEY-01 run body"
+      }
+    },
+    {
+      "id": "key.flexGapFracMin",
+      "value": 0.35,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller bench/part1.html line 233 (contact gap slider flex.gapPct, min 35) and line 238 (\"the gap is held at 35 to 50 percent of the cone, never under 1.2 mm\"); lo end of the CHK-KEY-01 band, read by CHK-KEY-01 (D-241)"
+      }
+    },
+    {
+      "id": "key.flexGapFracMax",
+      "value": 0.5,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller bench/part1.html line 233 (contact gap slider flex.gapPct, max 50) and line 238 (\"the gap is held at 35 to 50 percent of the cone, never under 1.2 mm\"); hi end of the CHK-KEY-01 band, read by CHK-KEY-01 (D-241)"
+      }
+    },
+    {
+      "id": "stack.bandOverlap.lo",
+      "value": 0.01,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COAMING 2026-08, CHECKS.md CHK-PRT-02 legal (0.01 to 0.02 mm z overlap of stacked prisms); lo end, read by the mesh stack route"
+      }
+    },
+    {
+      "id": "stack.bandOverlap.hi",
+      "value": 0.02,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COAMING 2026-08, CHECKS.md CHK-PRT-02 legal (0.01 to 0.02 mm z overlap of stacked prisms); hi end, read by the mesh stack route"
+      }
+    },
+    {
+      "id": "click.dropMin",
+      "value": 0.5,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "D-071, the click-spring window lower bound: force drop past the peak at least this fraction; PROFILE.md 10.1; read by sim/click-spring-window (M01-T07)"
+      }
+    },
+    {
+      "id": "prt.perimetersMin",
+      "value": 2,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "CHK-PRT-04 origin, two perimeters for a printable wall (syn/api-library-ai-design.md 6.4 C, reason \"line width 0.40, two perimeters\"); PROFILE.md 10.1; read by profile/printability-floor (M01-T06)"
+      }
+    },
+    {
+      "id": "overhang.maxDeg",
+      "value": 45,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "DETENT rev C verify_revC.py slice_scan: the region hanging past the layer below by more than one layer height is a 45 degree violation (originals/detent/files/revD/archive-revC/verify_revC.py lines 201 to 219); the 45 deg roof of CHK-SHP-03; no coupon recorded; read by CHK-PRT-12, CHK-PRT-13 and CHK-SHP-03 through packages/checks/src/defs/prt/overhang.ts (M04-T12)"
+      }
+    },
+    {
+      "id": "overhang.bedBandMm",
+      "value": 0.35,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/pawl/files/src/fdm.py line 43 (on_bed = (tri_hi - lo) < 0.35, lineage pawl.fdm/mk3): a triangle whose highest vertex sits under this above the part's lowest point sits on the plate and is not an overhang; read by CHK-PRT-12 and CHK-PRT-13 through packages/checks/src/defs/prt/overhang.ts"
+      }
+    },
+    {
+      "id": "bridge.maxMm",
+      "value": 9,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "SLATE 2026-08 print audit (CHECKS.md CHK-PRT-09 legal): a layer bridging more than 9 mm between supports sags; to be read by CHK-PRT-09 and CHK-SHP-03 FLAT_MAX_MM in a later packages/checks pass"
+      }
+    },
+    {
+      "id": "key.capBridgeMax",
+      "value": 4.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller src/model.js lines 455 to 462 (the flex fits and rules rows: cap bridge at most 4.5 unsupported cTPU); to be read by CHK-KEY-02 and reference/keys/flex-pair/build.ts FITS in a later pass"
+      }
+    },
+    {
+      "id": "key.splitMin",
+      "value": 0.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller src/model.js lines 455 to 462 (the flex fits and rules rows: split between the column halves at least 0.6, since a string across it reads as a press); to be read by CHK-KEY-03 and reference/keys/flex-pair/build.ts FITS in a later pass"
+      }
+    },
+    {
+      "id": "cpla.flexFatigueWidthMin",
+      "value": 0.8,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "cited as knowledge:04-heuristics in syn/api-library-ai-design.md 6.4 C (line 600, reason \"fatigue, cpla across layer lines under flex\"); no matching line in handoff/knowledge/04-heuristics.md (PROFILE.md 3.3); read by profile/flex-fatigue-floor (M01-T06)"
+      }
+    },
+    {
+      "id": "click.rigidSpanMin",
+      "value": 4,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "PIP clicky SNAPFE_RIGID, originals/pip/files/haft-src/src/layout.js line 110 (pip-controller layout.js line 110 the same): the flexing span lEff = max(this, l - sw / 2); ported by packages/sim/src/fe/click.ts clickRigid (M01-T01)"
+      }
+    },
+    {
+      "id": "click.contactPastPeak",
+      "value": 0.15,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "PIP clicky clickerDims, originals/pip/files/haft-src/src/layout.js line 86: contact travel cg = max(dPeak + this, contactValleyFraction x dValley), never before the peak; ported by packages/sim/src/fe/click.ts clickReadout (M01-T01)"
+      }
+    },
+    {
+      "id": "click.contactValleyFraction",
+      "value": 0.85,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "PIP clicky clickerDims, originals/pip/files/haft-src/src/layout.js lines 85 to 86: contact at this fraction of the valley travel; ported by packages/sim/src/fe/click.ts clickReadout (M01-T01)"
+      }
+    },
+    {
+      "id": "click.stopOvertravel",
+      "value": 0.3,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "PIP clicky clickerDims, originals/pip/files/haft-src/src/layout.js line 95: strain at the stop is the largest element strain for travel up to cg + this; ported by packages/sim/src/fe/click.ts clickReadout (M01-T01)"
+      }
+    },
+    {
+      "id": "cascade.slopWarn",
+      "value": 1.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "TUMBLER bench, originals/tumbler/files/tumbler.html line 2112: stacked slop over this reads \"deep chain, add a restoring lever\"; the bench warns and never refuses; constraints fixture mech/cascade-slop reads it (M01-T10)"
+      }
+    },
+    {
+      "id": "cascade.strokePerStage",
+      "value": 10,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "TUMBLER bench, originals/tumbler/files/tumbler.html line 2108: input stroke needed is cascade depth x this; constraints fixture mech/cascade-slop reads it (M01-T10)"
+      }
+    },
+    {
+      "id": "ogee16.latchServoX.lo",
+      "value": 123.3,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "OGEE16 R16-P, originals/ogee16/files/src/source/params.scad lines 183 to 185: LSV_X > 123.3 so the printed servo body clears column servo 3; stated in the comment, its 2.0 mm over 104.4 + SV_SHAFT_OFF 5.5 + SV_L/2 11.4 is unknown; constraints fixture mech/ogee16-latch-servo-window reads it (M01-T10)"
+      }
+    },
+    {
+      "id": "ogee16.latchServoX.hi",
+      "value": 125,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "OGEE16 R16-P, originals/ogee16/files/src/source/params.scad lines 185 to 186: LSV_X < 125 so the laser crank plus keeper washer clears the +X rail; stated in the comment, decomposition unknown; constraints fixture mech/ogee16-latch-servo-window reads it (M01-T10)"
+      }
+    },
+    {
+      "id": "ogee16.colServo3EndX",
+      "value": 104.4,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "OGEE16 R16-P, originals/ogee16/files/src/source/params.scad line 184 comment: column servo 3 ends at x 104.4; the fixture prints it in the floor reason (M01-T10)"
+      }
+    },
+    {
+      "id": "ogee16.railX1",
+      "value": 136,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "OGEE16 R16-P, originals/ogee16/files/src/source/params.scad line 175 RAIL_X1; the fixture prints it in the ceiling reason (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.fit",
+      "value": 0.95,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: rod diameter d = round(hole - fit, 2), default pegFit; constraints fixture mech/hook-rule reads it (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.margin",
+      "value": 0.35,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: bend clearance h at most hole - margin; hook_fit.py design alone defaults 0.2, both callers pass 0.35 (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.rise",
+      "value": 5.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: the hook locks at least this above the hole (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.ext",
+      "value": 2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: straight tail after the arc (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.bendStartOverRadius",
+      "value": 1,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: the Rb search starts at d/2 + this (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.bendStep",
+      "value": 0.25,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: the Rb search steps by this, so Rb floors lie on d/2 + 1 + 0.25 k (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.sweepMin",
+      "value": 20,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: the sweep search starts here (M01-T10)"
+      }
+    },
+    {
+      "id": "hook.sweepMax",
+      "value": 88,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "COTTER r5 GEO.hookRule, originals/cotter/files/cotter-src/src/geo.js line 102, equal to tools/hook_fit.py design_full lines 93 to 100: the sweep search stops below this (loop limit); the fixture reports it as the sweep ceiling (M01-T10)"
+      }
+    },
+    {
+      "id": "davit.touchMm",
+      "value": 1.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "davit.html DATA.const.touch (lineage davit.collide/r3-page): two unmasked proxy points closer than this are a contact; read by sim/proxy collide (M02-T06)"
+      }
+    },
+    {
+      "id": "davit.calibMarginMm",
+      "value": 1.45,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "pack_sim.py MARGIN (lineage davit.calib/r4): the legacy calibration masks every point within this of the other body, runtime touch 1.2; read by sim/proxy masks (M02-T06)"
+      }
+    },
+    {
+      "id": "davit.closestReachMm",
+      "value": 5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "M02-T06 step 5 report: a declared pair is scanned to this reach so its closest unmasked approach is reported; chosen for the report, not a legacy number"
+      }
+    },
+    {
+      "id": "davit.sampleSpacingMm",
+      "value": 5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "M02-T06 step 7: surface sampling lattice spacing for Stage B proxies, chosen so one std calibration over the gated pose set runs under the 60 s test budget and the R3 grip-tab interference is still found; recorded in packages/sim/records/davit-sweep.json"
+      }
+    },
+    {
+      "id": "davit.interferenceMm3",
+      "value": 0.5,
+      "unit": "mm3",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "sweep.py fails (lineage davit.sweep/r4): an exact intersection above this volume is a fail; read by M02-T06 R4 parity"
+      }
+    },
+    {
+      "id": "davit.groupCellMm",
+      "value": 6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "pack_sim.py prox_record uses cubes of 13 mm over 850 points (lineage davit.calib/r4, about 14 points per group); Stage B holds about 5000 points per body at the sampling spacing, so the cube edge is 6 mm to keep groups of the same order; read by sim/proxy build (M02-T06)"
+      }
+    },
+    {
+      "id": "davit.penetrationMm",
+      "value": 0.1,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "M02-T06 step 7: a point is inside a body only when it and its six neighbours at this offset are inside, so flush contact is not read as interference; chosen, not a legacy number"
+      }
+    },
+    {
+      "id": "davit.tier1SpacingMm",
+      "value": 3,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "M02-T06 step 11: point lattice spacing of the R4 parity tier 1 distance sweep; sweep.py samples 2600 to 6000 random surface points, this is the deterministic equivalent, chosen"
+      }
+    },
+    {
+      "id": "davit.tier2ReachMm",
+      "value": 3,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "M02-T06 step 11: a pair whose sampled closest approach is under this goes to the exact boolean; sweep.py uses 1.0 mm on its denser sample, so this reach is wider because the lattice overestimates distance by up to half its spacing"
+      }
+    },
+    {
+      "id": "davit.tier2Poses",
+      "value": 3,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "M02-T06 step 11: the exact boolean runs at this many poses of one pair sweep, the ones with the smallest sampled distance; sweep.py runs it at the single worst pose"
+      }
+    },
+    {
+      "id": "davit.hornHubShaveMm",
+      "value": 0.25,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-06",
+        "source": "sweep.py check_horn (lineage davit.sweep/r4): the horn hub is checked 0.25 mm short so the designed 0.2 mm clamp of the printed recess (lib.py horn_recess_cut, hub_relief minus 0.2) does not alarm"
+      }
+    },
+    {
+      "id": "ogee16.sweepSteps",
+      "value": 25,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/ogee16/legacy/source/check_sweep.py (lineage ogee16.check-sweep/r16p) STEPS: each crank is placed at this many evenly spaced points of its stroke, ends included; read by sim/scenes/ogee16-cranks (M02-T07)"
+      }
+    },
+    {
+      "id": "ogee16.sweepClashMm3",
+      "value": 1.0,
+      "unit": "mm3",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/ogee16/legacy/source/check_sweep.py (lineage ogee16.check-sweep/r16p) main, `if v > 1.0`: a swept crank sharing more than this volume with a servo box or an unlisted part is a swept collision; read by sim/scenes/ogee16-cranks (M02-T07)"
+      }
+    },
+    {
+      "id": "hook.pegPitch",
+      "value": 25.4,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 12 PITCH: hole pitch of the peg board; the stub sits one pitch below the hook and the board rows are spaced by it; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.runFront",
+      "value": 2.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) lines 15 and 33: the hook run and the stub start this far in front of the board face; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.arcSegments",
+      "value": 24,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 13 hook_centreline n: straight segments on the bend arc of the clip centreline; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.gap",
+      "value": 0.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) lines 27 and 100: the bend starts this far behind the board back face (clip_poly default, design_full gap); read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.bufferSegments",
+      "value": 64,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) lines 30 and 33 buffer resolution 16: 16 segments per quarter circle, so a rod or stub end is a polygon of this many sides; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.stubLenMax",
+      "value": 5.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 31: the stub runs min(tb, this) into the hole below; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.spineDepth",
+      "value": 4.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 27 clip_poly spine_d; knowledge/designs/cotter.md 5.3: stand-in for the JS spine, 1.0 mm conservative over 3.0 + 0.8 + 2.0 with spineHeadOver; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.spineHeadOver",
+      "value": 2.8,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 34: the spine box runs from the board face to spineDepth plus this; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hook.spineDrop",
+      "value": 7,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 34: the spine box runs this far below the stub line; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.boardRows.lo",
+      "value": -3,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 39 board rows: lowest hole row, in pitches from the hook hole; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.boardRows.hi",
+      "value": 3,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 39 board rows: highest hole row, in pitches from the hook hole; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.boardInset",
+      "value": 0.01,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 46 buffer(-0.01): the board is shrunk by this before the overlap test, so a pose touching the board counts as clear; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.tiltStep",
+      "value": 1.0,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 44 search DT: tilt step of the search grid; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.xyStep",
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 44 search DX: x and y step of the search grid; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.budget",
+      "value": 250000,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) lines 44 and 70: the search stops after this many popped poses; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.clearX",
+      "value": 0.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 60: the clip is out when its least x passes the board face by more than this; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.tiltWeight",
+      "value": 0.02,
+      "unit": "mm/deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 69 priority -minx - 0.02 tilt: tilting is worth this much x per degree; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.tilt.lo",
+      "value": 0,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 64 search limit; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.tilt.hi",
+      "value": 100,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 64 search limit; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.x.lo",
+      "value": -12,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 64 search limit; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.x.hi",
+      "value": 40,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 64 search limit; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.y.lo",
+      "value": -25,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 64 search limit; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.y.hi",
+      "value": 25,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 64 search limit; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "hookFit.boardReach",
+      "value": 200,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-07",
+        "source": "designs/cotter/legacy/tools/hook_fit.py (lineage cotter.hook-fit/r5) line 41: the board strip runs from -200 to 200 mm in y, past every hole row; read by sim/scenes/cotter-hook (M02-T09)"
+      }
+    },
+    {
+      "id": "electrical.contactFactor.lo",
+      "value": 10,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller docs/electrical.md:152 to 153, pip.md 5.10: printed contact resistance ten to thirty times the solved path (measured on the PIP stick, transferred to the flex cap); lo end; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.contactFactor.hi",
+      "value": 30,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller docs/electrical.md:152 to 153, pip.md 5.10: printed contact resistance ten to thirty times the solved path (measured on the PIP stick, transferred to the flex cap); hi end; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.skinOhm.lo",
+      "value": 1000000.0,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip.md 5.3 limits and 5.10 touch read: skin 1 to 20 Mohm (model.js:486); lo end; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.skinOhm.hi",
+      "value": 20000000.0,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip.md 5.3 limits and 5.10 touch read: skin 1 to 20 Mohm (model.js:486); hi end; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.tracePfPerMm",
+      "value": 0.02,
+      "unit": "pF/mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller src/model.js:418, Cpf = cpin + 0.02 pF per mm + 1; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.tracePfFixed",
+      "value": 1,
+      "unit": "pF",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip-controller src/model.js:418, the + 1 pF of Cpf = cpin + 0.02 pF per mm + 1; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.smearOhm",
+      "value": 300000.0,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "pip.md 5.13 cell 4: a wire across a split reads a few hundred kohm; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.gndLeadPf",
+      "value": 20,
+      "unit": "pF",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "a jumper of about 20 cm left on the GND pad, 10 to 30 pF (inferred, no measurement); read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.keyLeadPf",
+      "value": 20,
+      "unit": "pF",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "the probe jumper from GP2 or GP3 to the key's pad clip, the same kind of lead as electrical.gndLeadPf, 10 to 30 pF (inferred, no measurement); read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.keyLeadPf.lo",
+      "value": 10,
+      "unit": "pF",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "the probe jumper from GP2 or GP3 to the key's pad clip, 10 to 30 pF (inferred, no measurement); lo end; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.keyLeadPf.hi",
+      "value": 30,
+      "unit": "pF",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "the probe jumper from GP2 or GP3 to the key's pad clip, 10 to 30 pF (inferred, no measurement); hi end; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "electrical.noiseV",
+      "value": 0.005,
+      "unit": "V",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "5 mV rms on the floated node, no measurement; read by tools/skeleton/flexpair_probe/sim/run.mjs (virtual exit B, D-234); no ContactRow exists yet (packages/profile/src/lookup.ts contact()), so this row stands in until the coupon and M05 rows land; not measured on this part"
+      }
+    },
+    {
+      "id": "capacitive.pathCeilOhm",
+      "value": 30000,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "community",
+        "method": "coupon",
+        "date": "2026-10-08",
+        "source": "Schmitz et al., Capricate, UIST 2015 (mschmitz.org PDF), Dimension of Touch Electrodes: touch electrodes 5, 10, 15 and 20 mm in Torwell conductive ABS against series resistors of 20 to 120 kohm in 10 kohm steps; above 30 kohm the SNR drops below 5:1 for every size (evidence/x/web-hci-fab-research/capricate.txt lines 407 to 416); measured by others on their own Ultimaker, 0.8 mm nozzle, 0.2 mm layer; verified-claims.md line 45; D-021; read by CHK-NET-28 through circuit/capacitive-path-ceiling (M05-T12)"
+      }
+    },
+    {
+      "id": "read.adc.lineOhm",
+      "value": 100000,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "CHK-NET-06 line, TANG R5 2026-08-17 (tang_r5_wiring.html line 436); the BLOCKS wire verdict 'signal and ADC fine' below 1e5 (originals/blocks/files/src-extracted/parts.js line 702, lineage blocks.parts/blocks-1; BOSS parts.js line 426); GIB part2.js line 544 states the same 100 kohm; no coupon recorded; read by packages/circuit/src/read/adc.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "read.adc.analogCeilOhm",
+      "value": 1000000,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "BLOCKS wire verdict: at or above 1e6 'digital only (slow edges), no analog' (originals/blocks/files/src-extracted/parts.js line 702, lineage blocks.parts/blocks-1; BOSS parts.js line 426); no coupon recorded; read by packages/circuit/src/read/adc.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "read.adc.holdCapNf",
+      "value": 100,
+      "unit": "nF",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "BLOCKS wire verdict 'ADC needs a 100 nF at the pin' between 1e5 and 1e6 (originals/blocks/files/src-extracted/parts.js line 702; BOSS parts.js line 426); GIB part2.js line 544 asks the same 100 nF above 100 kohm; read by packages/circuit/src/read/adc.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "read.ratiometric.pulldownRatio",
+      "value": 20,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "GIB part2.js line 544 and part3.js line 247 (lineage gib.parts/gib-4, gib.shell/gib-4): any no-touch pull-down at least 20 times the wiper source; read by packages/circuit/src/read/ratiometric.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "read.ratiometric.pulldownMinOhm",
+      "value": 1000000,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "GIB part3.js line 247 (lineage gib.shell/gib-4): pull-down max(1e6, 20 Rsrc); read by packages/circuit/src/read/ratiometric.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "read.ladder.leadOhm",
+      "value": 4000,
+      "unit": "ohm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "FEELER LADDER keypad Rc = 4000 in series with the pull-down (originals/thinpot/files/feeler_thinpot.html lines 4504 and 4951, lineage feeler.bench/thinpot-16); no coupon recorded; read by packages/circuit/src/read/ladder.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "read.ladder.minStepCounts",
+      "value": 25,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "FEELER LADDER keypad: under about 25 ADC counts between levels printed resistor drift makes keys overlap (originals/thinpot/files/feeler_thinpot.html lines 4545 and 4968, lineage feeler.bench/thinpot-16); read by packages/circuit/src/read/ladder.ts (M05-T05)"
+      }
+    },
+    {
+      "id": "route.keepoutPad",
+      "value": 0.15,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP router, pip-controller src/router.js line 68 (const safety = 0.15) at b137deb (lineage router/pip-controller-b137deb): added to every terminal keepout radius t.r + clr + w/2 and to the via zone via + clr + w/2; no coupon recorded; read by packages/copper/src/route/negotiated.ts (M05-T08)"
+      }
+    },
+    {
+      "id": "route.zonePad",
+      "value": 0.02,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP router, pip-controller src/router.js line 74 (zoneSt = stencil(R.w + R.clr + 0.02)) at b137deb (lineage router/pip-controller-b137deb): trace centrelines w + clr + this apart, with no larger margin or parallel lanes on the 2.54 mm pad pitch read as conflicts (lines 72 to 73); read by packages/copper/src/route/negotiated.ts (M05-T08)"
+      }
+    },
+    {
+      "id": "stack.skin",
+      "value": 0.72,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP buried stack default, pip-controller src/layout.js line 27 at b137deb (stack: { layer: 0.24, skin: 0.72, trace: 0.72, iso: 0.96, pad: 0.72, bezel: 2.4 }), lineage pip.layout/pip-controller-b137deb: PETG under trace layer 1 (z.f0, layout.js line 168); PROFILE.md 6.1 (D-085); no coupon recorded; read by reference/electrical/pip-buried-route/build.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "stack.trace",
+      "value": 0.72,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP buried stack default, pip-controller src/layout.js line 27 at b137deb (stack: { layer: 0.24, skin: 0.72, trace: 0.72, iso: 0.96, pad: 0.72, bezel: 2.4 }), lineage pip.layout/pip-controller-b137deb: thickness of each trace layer (layout.js lines 168 to 169); PROFILE.md 6.1 (D-085); no coupon recorded; read by reference/electrical/pip-buried-route/build.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "stack.iso",
+      "value": 0.96,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP buried stack default, pip-controller src/layout.js line 27 at b137deb (stack: { layer: 0.24, skin: 0.72, trace: 0.72, iso: 0.96, pad: 0.72, bezel: 2.4 }), lineage pip.layout/pip-controller-b137deb: 4 layers of PETG between a trace and the one crossing it (layout.js lines 168 to 169; pip-controller print/print-card.txt 'insulation between layers 0.96 mm'); PROFILE.md 6.1 (D-085); the v3 0.48 is retired; no coupon recorded; read by reference/electrical/pip-buried-route/build.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "stack.overL2",
+      "value": 1.68,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP buried stack default, pip-controller src/layout.js line 27 at b137deb (stack: { layer: 0.24, skin: 0.72, trace: 0.72, iso: 0.96, pad: 0.72, bezel: 2.4 }), lineage pip.layout/pip-controller-b137deb: iso 0.96 plus the 0.72 pad floor between layer 2 and the pads (layout.js lines 169 to 171; print/print-card.txt 'PETG over layer 2 1.68 mm'); PROFILE.md 6.1 (D-085); the v3 0.48 is retired; no coupon recorded; read by reference/electrical/pip-buried-route/build.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "stack.traceWidth",
+      "value": 1.4,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP buried stack default, pip-controller src/layout.js line 28 at b137deb (route: { w: 1.4, ... }), drawn with no bleed (D-084); print/print-card.txt 'trace width 1.40 mm, about 3 lines at a 0.4 nozzle'; PROFILE.md 6.1 (D-085); no coupon recorded; read by packages/copper/src/emit/trace-layer.ts and reference/electrical/pip-buried-route/build.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "stack.netToNetMin",
+      "value": 0.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP buried stack net-to-net floor: the closest any two nets get on PIP's default model, 0.59999999 mm computed by PIP b137deb model.js lines 216 to 223 (print/print-card.txt and docs/electrical.md call it measured, meaning measured on the model); PIP itself warns only under 0.3 (model.js line 224) and its fits row fails under 0.4 (model.js line 451); PROFILE.md 6.1 (D-085, C-06); the v3 0.3 floor is retired; no coupon recorded; read by CHK-NET-02 and CHK-NET-12 (M05-T10)"
+      }
+    },
+    {
+      "id": "route.postSep",
+      "value": 0.12,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP model, pip-controller src/model.js line 27 at b137deb (const sep = (r) => (Math.abs(r - Rt.w / 2) < 0.12 ? Rt.w / 2 + 0.12 : r)): a post or via radius within this of half the trace width moves to w/2 + this, so a round cap and a post on one centre leave no sliver triangles; no coupon recorded; read by packages/copper/src/emit/trace-layer.ts and CHK-NET-11 (M05-T10)"
+      }
+    },
+    {
+      "id": "route.discPad",
+      "value": 0.05,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP model, pip-controller src/model.js lines 41 and 42 at b137deb (circle(sep(t.r) + 0.05, ...), circle(sep(Rt.via) + 0.05, ...)): the disc a post or via draws on each trace layer is this wider than the post, so the post starts and ends inside it; no coupon recorded; read by packages/copper/src/emit/trace-layer.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "route.regionClose",
+      "value": 0.01,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP model, pip-controller src/model.js line 43 at b137deb (union2(cs).offset(0.01, 'Miter', 2).offset(-0.01, 'Miter', 2)): each trace layer per net is one region closed by this outward then inward, so tangent pieces fuse instead of pinching; no coupon recorded; read by packages/copper/src/emit/trace-layer.ts and CHK-NET-11 (M05-T10)"
+      }
+    },
+    {
+      "id": "route.postOverlap",
+      "value": 0.02,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP model, pip-controller src/model.js line 8 at b137deb (const EZ = 0.02), used at line 48: a terminal post runs this past the pad plane top; no coupon recorded; read by reference/electrical/pip-buried-route/build.ts (M05-T10)"
+      }
+    },
+    {
+      "id": "route.gapSearch",
+      "value": 1.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "PIP model, pip-controller src/model.js line 221 at b137deb (nets[i].m.minGap(nets[j].m, 1.0)): the net-to-net search distance; a pair further apart reads as this; no coupon recorded; read by packages/circuit/src/extract/nets.ts netGaps (M05-T10)"
+      }
+    },
+    {
+      "id": "route.stick.grid",
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "TOGGLE route search, toggle src/src/part2d.js at sha256 1da486e7 (lineage toggle.build/part2d) line 171 (const g = 0.2 in tryRoute): the floor route grid pitch of a tilt stick body; no coupon recorded; read by packages/copper/src/route/search.ts (M05-T09)"
+      }
+    },
+    {
+      "id": "route.stick.edgePad",
+      "value": 0.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "TOGGLE route search, toggle src/src/part2d.js at sha256 1da486e7 (lineage toggle.build/part2d) line 176 (const m = w / 2 + 0.6): keep-in distance past half a trace from the body outline; no coupon recorded; read by packages/copper/src/route/search.ts (M05-T09)"
+      }
+    },
+    {
+      "id": "route.stick.leadR",
+      "value": 0.65,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "TOGGLE route search, toggle src/src/part2d.js at sha256 1da486e7 (lineage toggle.build/part2d) line 197: a direction lead foot is an obstacle of radius 0.65 + clr + w/2 on the top trace layer; no coupon recorded; read by packages/copper/src/route/search.ts (M05-T09)"
+      }
+    },
+    {
+      "id": "route.stick.comR",
+      "value": 0.71,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "TOGGLE route search, toggle src/src/part2d.js at sha256 1da486e7 (lineage toggle.build/part2d) lines 197 and 229: the COM column foot is an obstacle of radius 0.71 + clr + w/2 on the top trace layer, and a solo COM gap keeps t.r + 0.71 + clr from every pin cup; no coupon recorded; read by packages/copper/src/route/search.ts (M05-T09)"
+      }
+    },
+    {
+      "id": "route.stick.leadHalf",
+      "value": 0.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "TOGGLE route search, toggle src/src/part2d.js at sha256 1da486e7 (lineage toggle.build/part2d) line 237 (leadSlack = half - 0.5 / Re - 0.08) and line 284 (wall contact lead half width 0.5 / Re): half the width of a wall contact lead; no coupon recorded; read by packages/copper/src/route/search.ts (M05-T09)"
+      }
+    },
+    {
+      "id": "vinyl.rim",
+      "value": 0.15,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY family rim, reference/copper/keyway/legacy/gen_keyway.py line 82 (RIM = OUTLINE minus OUTLINE.buffer(-0.15)), unioned into every layer so all layers share one outline and one document size; a design value, no coupon; read by packages/copper/src/vinyl/draft.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.emitTolerance",
+      "value": 0.012,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY family emit simplify, reference/copper/keyway/legacy/gen_keyway.py line 298 (simplify(0.012, preserve_topology=True), \"<= 12 um, far under the 1.0 mm clearance\"); read by packages/copper/src/vinyl/emit-svg.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.erodeHalfMin",
+      "value": 0.55,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY family erode test, reference/copper/keyway/legacy/gen_keyway.py line 227 (buffer(-0.55) proves 1.10 mm features); CHK-NET-14 title; no coupon; read by packages/checks/src/copper/erode.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.artGapMin",
+      "value": 0.7,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY art island gap gate, reference/copper/keyway/legacy/gen_keyway.py line 233 (gmin >= 0.70); no coupon; read by packages/checks/src/copper/art.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.counterErode",
+      "value": 0.3,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY art counter gate, reference/copper/keyway/legacy/gen_keyway.py line 236 (Polygon(r).buffer(-0.3).area, \"smallest survives 0.6 mm erode\"); no coupon; read by packages/checks/src/copper/art.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.wedgeCopperMin",
+      "value": 1.8,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY wedge slider gate, reference/copper/keyway/legacy/gen_keyway.py line 245 (min(a, b) < 1.8 fails); no coupon; read by packages/checks/src/copper/slider.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.sliderSamples",
+      "value": 41,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY family slider sampling, reference/copper/keyway/legacy/gen_keyway.py lines 241 to 242 (41 vertical cuts over the travel); CHK-NET-15 title; read by packages/checks/src/copper/slider.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.filmBridgeGrow",
+      "value": 0.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY film bridge gate, reference/copper/keyway/legacy/gen_keyway.py line 269 (NET[k].buffer(0.6).intersects(film)); no coupon; read by packages/checks/src/copper/film.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.filmCoverMin",
+      "value": 20,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY film cover gate, reference/copper/keyway/legacy/gen_keyway.py line 272 (min(a, b) > 20 mm2 of each comb under the film); no coupon; read by packages/checks/src/copper/film.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.windowExposeMin",
+      "value": 15,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY spacer window gate, reference/copper/keyway/legacy/gen_keyway.py line 274 (min(a, b) > 15 mm2 of each comb in the window); no coupon; read by packages/checks/src/copper/film.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.filmCollectorClear",
+      "value": 1.5,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY slider film to collector gate, reference/copper/keyway/legacy/gen_keyway.py line 277 (VELO_SL.distance(NET['SC']) >= 1.5); no coupon; read by packages/checks/src/copper/wiper.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.wiperPadGrow",
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY wiper stray gate, reference/copper/keyway/legacy/gen_keyway.py line 280 (the collector pad box grown 0.2 before the stray area is taken); no coupon; read by packages/checks/src/copper/wiper.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.wiperStrayMax",
+      "value": 0.01,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY wiper stray gate, reference/copper/keyway/legacy/gen_keyway.py line 281 (stray.area < 0.01); CHK-NET-19 title; no coupon; read by packages/checks/src/copper/wiper.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.wiperLandMin",
+      "value": 8,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY wiper landing gate, reference/copper/keyway/legacy/gen_keyway.py line 282 (reach.area > 8); no coupon; read by packages/checks/src/copper/wiper.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.slotOverFilmMin",
+      "value": 0.995,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "KEYWAY spacer slot gate, reference/copper/keyway/legacy/gen_keyway.py line 283 (slot area over the film above 0.995 of the slot); no coupon; read by packages/checks/src/copper/wiper.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "pcb.drillMargin",
+      "value": 0.15,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-11",
+        "source": "SPINDLE R1 pcb.py drill breakout gate pad_poly.buffer(-drill/2 - 0.15): copper a drill leaves inside its own pad (knowledge/kernels/board-pcb.md 'Drill position is not pad centre'); no coupon; read by CHK-BRD-02 (packages/checks/src/brd/board.ts)"
+      }
+    },
+    {
+      "id": "pcb.moduleLanding",
+      "value": 0.05,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-11",
+        "source": "M08-T12 step 2: a catalog module hole lands within 0.05 mm of its catalog pin, and the same tolerance matches a back-mounted pattern under the mirror (CHK-BRD-03); a card choice, no coupon; read by CHK-BRD-02 and CHK-BRD-03 (packages/checks/src/brd/board.ts)"
+      }
+    },
+    {
+      "id": "vinyl.weedErode",
+      "value": 0.75,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "SPLICE rev C README: eroding every shape by 0.75 mm leaves one connected skeleton per net (knowledge/designs/splice.md; CHK-NET-23 title); no code behind it in the bench, no coupon; read by packages/copper/src/vinyl/weed.ts (M05-T14)"
+      }
+    },
+    {
+      "id": "vinyl.spanRailMin",
+      "value": 0.1,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "capacitive slider span floor, reference/copper/vernier/legacy/gen_vernier.py line 250 (0.10 < min(rat)) and the same in QUADRANT, SPLINE, TESSERA, FRET and STAVE; CHK-NET-15 title; no coupon; read by packages/checks/src/copper/ratio.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.spanRailMax",
+      "value": 0.9,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "capacitive slider span ceiling, reference/copper/vernier/legacy/gen_vernier.py line 250 (max(rat) < 0.90) and the same in QUADRANT to STAVE; CHK-NET-15 title; no coupon; read by packages/checks/src/copper/ratio.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.ratioMonotoneTol",
+      "value": 1e-06,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "slider monotone tolerance, reference/copper/vernier/legacy/gen_vernier.py line 247 (rat[i] > rat[i + 1] - 1e-6) and the same in QUADRANT to STAVE; a float guard; read by packages/checks/src/copper/ratio.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.wiringZoneGrow",
+      "value": 4.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "live copper margin around the wiring zone, reference/copper/vernier/legacy/gen_vernier.py line 271 (COPPER.difference(TERMBLK.buffer(4.0))) and the rail zone in QUADRANT to STAVE; no coupon; read by packages/checks/src/copper/mask.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.maskShrink",
+      "value": 0.001,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "dielectric cover test shrink, reference/copper/vernier/legacy/gen_vernier.py line 272 (VINYL.buffer(-0.001)) and the same in QUADRANT to STAVE; a float guard; read by packages/checks/src/copper/mask.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.bareMax",
+      "value": 0.5,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "bare live copper ceiling, reference/copper/vernier/legacy/gen_vernier.py line 273 (unc.area < 0.5) and the same in QUADRANT to STAVE; CHK-NET-20 title; no coupon; read by packages/checks/src/copper/mask.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.apartMax",
+      "value": 0.01,
+      "unit": "mm2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "overlap under which two regions count as apart, reference/copper/vernier/legacy/gen_vernier.py lines 274 to 276 (vinyl over the clip pads < 0.01), gen_tessera.py lines 294 and 334 (channel strip and slider band against the tiles); a float guard; read by packages/checks/src/copper/mask.ts and zones.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.accentEdgeClear",
+      "value": 1.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "accent tiles inside the faceplate edge, reference/copper/vernier/legacy/gen_vernier.py line 282 (within(VINYL.buffer(-1.0))) and the same in QUADRANT to STAVE; no coupon; read by packages/checks/src/copper/mask.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.spacingTol",
+      "value": 0.001,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "channel sub-lane spacing tolerance, reference/copper/tessera/legacy/gen_tessera.py line 298 (>= tw + clr - 0.001) and gen_fret.py line 345 (>= MARG - 0.001); a float guard; read by packages/checks/src/copper/rail.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "vinyl.coordTol",
+      "value": 1e-09,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "terminal on its declared coordinate, reference/copper/vernier/legacy/gen_vernier.py line 259 (abs(cx - TOPX) < 1e-9) and gen_quadrant.py line 263 (abs(cx - x0 - i * pitch) < 1e-9); a float guard; read by packages/checks/src/copper/rail.ts (M05-T15)"
+      }
+    },
+    {
+      "id": "slug.vendRate",
+      "value": 1000,
+      "unit": "half steps/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "designs/slug/legacy/BUILD.md line 132 (1000 half steps per second, about 4 s a vend) and slug.html line 958 (let rate=1000; lineage slug.bench/slug-12); the knowledge base puts a 28BYJ-48 torque cliff near 1000, so the rate is a program parameter; read by packages/motion/src/programs/slug.ts (M07-T11)"
+      }
+    },
+    {
+      "id": "latch.identityTolMm",
+      "value": 0.001,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "docs/plan/milestones/M07-motion-nest.md M07-T11 step 5: the CHK-MOT-05 sides, margin + overshoot and (full rise - half rise) - cam lift - LUG_TOT, agree within this on R16 (2.175), R17 (1.1853) and R17b (1.2853) (computed); read by packages/checks/src/defs/mot/CHK-MOT-05.ts"
+      }
+    },
+    {
+      "id": "ply3.minFeature",
+      "value": 1.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "SKETCH v3 K.defaultMaterial, originals/sketch/files/sketch.html line 483 (lineage sketch.bench/v3): minFeature 1.0 for ply 3mm, the material default MAT.MIN_FEATURE warns under (line 859); no coupon. The web w of the CHK-SHT-07 hub rule, read by packages/nest/src/connect.ts (M07-T04 step 5)"
+      }
+    },
+    {
+      "id": "detent.throw",
+      "value": 150,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 479 (S.throw, mirror to target; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); the page default, no rig measured; read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.sep",
+      "value": 22,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 479 (S.sep, mirror separation; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); the page default; read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.fieldW",
+      "value": 120,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 479 (S.W, the target field the four corners frame; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); the page default; read by packages/motion/src/calibrate.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.fieldH",
+      "value": 120,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 479 (S.H; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); the page default; read by packages/motion/src/calibrate.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.rate",
+      "value": 400,
+      "unit": "half steps/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 484 (S.rate, beam-on rate; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); the page default; read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.travel",
+      "value": 500,
+      "unit": "half steps/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 484 (S.travel, beam-off rate; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); the page default; read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.accel",
+      "value": 3000,
+      "unit": "half steps/s2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 214 (mAccel input default, floored at 200 by planSpeeds line 1107; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.vFloor",
+      "value": 120,
+      "unit": "half steps/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 1108 (vFloor, safe pull-in rate from standstill; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.vMin",
+      "value": 60,
+      "unit": "half steps/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 1149 (the lowest rate an interval is computed from; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.tickHz",
+      "value": 20000,
+      "unit": "Hz",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 1102 (TICKHZ, must match firmware TICK_HZ; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); read by packages/motion/src/planners/detent-steps.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "detent.batchMax",
+      "value": 6,
+      "unit": "points",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 1769 (streamCmds batchMax, points per S line to stay under the BLE MTU; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); read by packages/motion/src/serialise.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "calibrate.aspectTol",
+      "value": 0.25,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/detent/files/beam/detent-plot.html line 1911 (the quad aspect warning fires past this fraction off the field W:H; lineage detent.plot/beam; the copy designs/detent/legacy/detent-plot.html is byte identical); read by packages/motion/src/calibrate.ts for both rigs (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.dist",
+      "value": 152,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2173 (CFG.dist, 6 in throw; lineage washer.app/laserriggg); the page default; read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.wallW",
+      "value": 305,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2173 (CFG.wallW, 12 in target; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.wallH",
+      "value": 305,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2173 (CFG.wallH; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.mountH",
+      "value": 70,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2174 (CFG.mountH, laser height above the floor; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.minUs",
+      "value": 500,
+      "unit": "us",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2176 (CFG.minUs, pulse window matching firmware RANGE; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.maxUs",
+      "value": 2500,
+      "unit": "us",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2176 (CFG.maxUs; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.homePan",
+      "value": 90,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2179 (CFG.homePan, set by ZERO; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.homeTilt",
+      "value": 90,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 2179 (CFG.homeTilt; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.feed",
+      "value": 260,
+      "unit": "mm/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3767 (PLAN.feed; lineage washer.app/laserriggg); the harvested copy designs/washer/legacy/laser-rig.zip line 3395 had 160, the M07 golden; read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.travel",
+      "value": 400,
+      "unit": "mm/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3770 (PLAN.travel; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.accel",
+      "value": 8000,
+      "unit": "mm/s2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3771 (PLAN.accel, a ceiling above the servo limit; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.jd",
+      "value": 0.18,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3782 (PLAN.jd, junction deviation; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.steps",
+      "value": 4.0,
+      "unit": "deadband steps per frame",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3784 (PLAN.steps; lineage washer.app/laserriggg); the harvested copy had 1.0, the M07 golden; read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.tol",
+      "value": 0.05,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3798 (PLAN.tol, path tolerance; lineage washer.app/laserriggg); read by packages/motion/src/serialise.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.jerk",
+      "value": 0.045,
+      "unit": "s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3806 (PLAN.jerk; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.dense",
+      "value": 0.25,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3840 (DENSE, planner sample spacing; lineage washer.app/laserriggg); read by packages/motion/src/planners/washer-mm.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.segMinMs",
+      "value": 8,
+      "unit": "ms",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 5297 (SEG_MIN_MS; lineage washer.app/laserriggg); read by packages/motion/src/serialise.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.segMaxMs",
+      "value": 60,
+      "unit": "ms",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 5297 (SEG_MAX_MS, linear playback; lineage washer.app/laserriggg); read by packages/motion/src/serialise.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.mergeMaxMs",
+      "value": 90,
+      "unit": "ms",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 5029 (MERGE_MAX_MS; lineage washer.app/laserriggg); read by packages/motion/src/serialise.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "washer.mergeMaxMm",
+      "value": 3.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 5030 (MERGE_MAX_MM; lineage washer.app/laserriggg); read by packages/motion/src/serialise.ts (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9g.slew",
+      "value": 240,
+      "unit": "deg/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3833 (SERVOS.micro9g.slew, preset '9g micro (SG90 / MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9g.accel",
+      "value": 1800,
+      "unit": "deg/s2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3833 (SERVOS.micro9g.accel, preset '9g micro (SG90 / MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9g.deadband",
+      "value": 8,
+      "unit": "us",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3833 (SERVOS.micro9g.deadband, preset '9g micro (SG90 / MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9g.frame",
+      "value": 50,
+      "unit": "Hz",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3833 (SERVOS.micro9g.frame, preset '9g micro (SG90 / MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9g.lash",
+      "value": 0.55,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3833 (SERVOS.micro9g.lash, preset '9g micro (SG90 / MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9g.band",
+      "value": 6.0,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3833 (SERVOS.micro9g.band, preset '9g micro (SG90 / MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9gm.slew",
+      "value": 300,
+      "unit": "deg/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3834 (SERVOS.micro9gm.slew, preset '9g metal gear (MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9gm.accel",
+      "value": 2600,
+      "unit": "deg/s2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3834 (SERVOS.micro9gm.accel, preset '9g metal gear (MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9gm.deadband",
+      "value": 6,
+      "unit": "us",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3834 (SERVOS.micro9gm.deadband, preset '9g metal gear (MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9gm.frame",
+      "value": 50,
+      "unit": "Hz",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3834 (SERVOS.micro9gm.frame, preset '9g metal gear (MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9gm.lash",
+      "value": 0.3,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3834 (SERVOS.micro9gm.lash, preset '9g metal gear (MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.micro9gm.band",
+      "value": 5.0,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3834 (SERVOS.micro9gm.band, preset '9g metal gear (MG90S)', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.standard.slew",
+      "value": 420,
+      "unit": "deg/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3835 (SERVOS.standard.slew, preset 'Standard metal gear', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.standard.accel",
+      "value": 5000,
+      "unit": "deg/s2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3835 (SERVOS.standard.accel, preset 'Standard metal gear', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.standard.deadband",
+      "value": 4,
+      "unit": "us",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3835 (SERVOS.standard.deadband, preset 'Standard metal gear', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.standard.frame",
+      "value": 50,
+      "unit": "Hz",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3835 (SERVOS.standard.frame, preset 'Standard metal gear', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.standard.lash",
+      "value": 0.18,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3835 (SERVOS.standard.lash, preset 'Standard metal gear', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.standard.band",
+      "value": 3.5,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3835 (SERVOS.standard.band, preset 'Standard metal gear', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.digital.slew",
+      "value": 700,
+      "unit": "deg/s",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3836 (SERVOS.digital.slew, preset 'Digital high speed', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.digital.accel",
+      "value": 9000,
+      "unit": "deg/s2",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3836 (SERVOS.digital.accel, preset 'Digital high speed', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.digital.deadband",
+      "value": 2,
+      "unit": "us",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3836 (SERVOS.digital.deadband, preset 'Digital high speed', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.digital.frame",
+      "value": 200,
+      "unit": "Hz",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3836 (SERVOS.digital.frame, preset 'Digital high speed', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.digital.lash",
+      "value": 0.08,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3836 (SERVOS.digital.lash, preset 'Digital high speed', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "servo.digital.band",
+      "value": 1.6,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-08",
+        "source": "originals/washer/files/rig/laser-rig.html line 3836 (SERVOS.digital.band, preset 'Digital high speed', per axis; lineage washer.app/laserriggg); a preset of the page, no servo measured; read by packages/motion/src/planners/washer-mm.ts servoPreset (M07-T12)"
+      }
+    },
+    {
+      "id": "conductor.maxSlopeDeg",
+      "value": 45,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "the CHK-NET-13 line (CHECKS.md 9.4, plan-deltas R54): a printed conductor segment steeper than this against the bed plane in print pose warns; TCB, CHI 2021 measured vertical printed traces at about 7x the resistance of flat ones (measured by others), and the 45 deg line itself has no coupon; read by packages/checks/src/net/net13.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "read.swing.minPercent",
+      "value": 30,
+      "unit": "percent",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/baffle-r3/files/src/model.js line 1012 (lineage baffle.model/r3-36): ok(swing >= 0.3, 'slider swing is at least 30 percent'), swing = track over track plus both drive traces (line 1010); BAFFLE R3 states it in source, the GUDGEON reader proposed 25 (CHECKS.md 9.4); no coupon recorded; read by packages/checks/src/net/net30.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "fit.collet.interferenceMinMm",
+      "value": 0.08,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/baffle-r3/files/src/model.js line 994 (lineage baffle.model/r3-36): tile socket at least 0.08 mm smaller than the peg it seats on, diametral; BAFFLE R3 tile 4.8 stud in a 4.68 socket, 0.12 (line 123, 125); no coupon recorded; read by packages/checks/src/fit/fit07.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "fit.collet.interferenceMaxMm",
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/baffle-r3/files/src/model.js line 994 (lineage baffle.model/r3-36): tile socket at most 0.2 mm smaller than the peg, diametral, an interference fit and not a slip fit; no coupon recorded; read by packages/checks/src/fit/fit07.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "fit.collet.fingersMin",
+      "value": 3,
+      "unit": "count",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/baffle-r3/files/src/model.js line 995 (lineage baffle.model/r3-36): the socket wall split into at least 3 fingers so it springs onto the peg instead of cracking; BAFFLE R3 ships 4 slots (line 123); the slots came after the first tile print (BAFFLE R3 2026-09-18, CHECKS.md 9.2); read by packages/checks/src/fit/fit07.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "fit.collet.squeezeMinMm",
+      "value": 0.06,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/baffle-r3/files/src/model.js line 997 (lineage baffle.model/r3-36): socket bottoms on the peg tip with at least 0.06 mm of axial squeeze, stud height over socket depth; BAFFLE R3 1.8 over 1.68, 0.12 (lines 123, 125); no coupon recorded; read by packages/checks/src/fit/fit07.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "fit.collet.squeezeMaxMm",
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/baffle-r3/files/src/model.js line 997 (lineage baffle.model/r3-36): at most 0.2 mm of axial squeeze, rather than landing on the deck; no coupon recorded; read by packages/checks/src/fit/fit07.ts (M05-T19)"
+      }
+    },
+    {
+      "id": "knurl.pawlStrainMax",
+      "value": 0.02,
+      "unit": "ratio",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/knurl/files/knurl.html line 1202 (lineage knurl.bench/knurl-8): the detent strip warns past 2 percent strain at full lift; KNURL design band, no coupon; read by packages/mechanisms/src/constraints/detent-bands.ts (M06-T04)"
+      }
+    },
+    {
+      "id": "knurl.clickMinN",
+      "value": 0.4,
+      "unit": "N",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/knurl/files/knurl.html line 1204: a click under 0.4 N reads faint; KNURL design band, no coupon; read by packages/mechanisms/src/constraints/detent-bands.ts (M06-T04)"
+      }
+    },
+    {
+      "id": "knurl.clickMaxN",
+      "value": 3,
+      "unit": "N",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "originals/knurl/files/knurl.html line 1203: a click over 3 N reads stiff; KNURL design band, no coupon; read by packages/mechanisms/src/constraints/detent-bands.ts (M06-T04)"
+      }
+    },
+    {
+      "id": "coincidence.rampMinDeg",
+      "value": 40,
+      "unit": "deg",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-09",
+        "source": "packages/mechanisms/seed/mechanisms.seed.yaml line 101 (OGEE R7 to R17): ramp_a at least 40 deg against acrylic friction 0.45, a design value; OGEE16 params.scad line 88 and STIPPLE R17b DATA.P RAMP_A both build at 40; read by packages/mechanisms/src/constraints/coincidence-ramp.ts (M06-T03)"
+      }
+    }
+  ],
+  "moved": [
+    {
+      "id": "sg90.flangeSpan",
+      "to": "catalog row sg90 field dims.tabSpan (D-104)"
+    },
+    {
+      "id": "sg90.body",
+      "to": "catalog row sg90 fields dims.length, dims.width, dims.height (D-104)"
+    },
+    {
+      "id": "sg90.shaftFromEnd",
+      "to": "catalog row sg90 field dims.shaftOffset (D-104)"
+    },
+    {
+      "id": "esp32c3.supermini.padCentres",
+      "to": "catalog row esp32c3-supermini field dims.hybridPadCentre at vendor tier (D-096, D-103)"
+    }
+  ]
+}
