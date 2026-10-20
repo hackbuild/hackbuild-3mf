@@ -343,6 +343,138 @@
       }
     },
     {
+      "id": "click.modulusSpreadPct",
+      "value": 20,
+      "unit": "percent",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "spread either side of the PETG working modulus 1900 MPa, which is itself a working value from PIP clicky defaults (packages/profile/data/materials.json line 83, tier inferred); vendor PETG sheets differ by brand and none has been read here (unknown); 1500 and 2200 MPa at l 28, t 0.55 move the SNAPFE peak from 158 g to 125 and 183 g (computed, .hbf-notes/r1/briefs/flagship-access-switch.md scout finding 2); read by the access switch force band (R1-flagship-access-switch-04)"
+      }
+    },
+    {
+      "id": "click.beamPrintErrorMm",
+      "value": 0.05,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "one 0.05 mm step of the access switch thickness ladder coupon; the force goes with beam thickness cubed, so t 0.50 to 0.60 at l 28 moves the SNAPFE peak from 108 to 224 g (computed, scout finding 2); originals/pip/files/pip-controller/LESSONS.md line 114 illustrates a 0.10 mm error (drawn 0.55, printed 0.45) without a measurement (unknown); no coupon recorded; read by R1-flagship-access-switch-04 and -10"
+      }
+    },
+    {
+      "id": "access.pressTargetN",
+      "value": 1.47,
+      "unit": "N",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "150 g times standard gravity 9.80665 m/s2 (a defined constant) is 1.471 N (computed), rounded to 1.47; 150 g is the owner's design target \"Accessibility switch, 150 g press\" (fab-knowledge/plan-v5/old-skills-scenarios.md line 17), a target and not a measured feel; read by the access switch force claim (R1-flagship-access-switch-04)"
+      }
+    },
+    {
+      "id": "access.pressBandPct",
+      "value": 20,
+      "unit": "percent",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "design band either side of access.pressTargetN, 1.18 to 1.76 N or 120 to 180 g (computed); chosen to match click.modulusSpreadPct so the drawn point can sit inside it while the modulus is a working value; no coupon recorded; read by the access switch force claim (R1-flagship-access-switch-04)"
+      }
+    },
+    {
+      "id": "access.paddleGuideClr",
+      "value": 0.4,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "diametral clearance of the access switch paddle in its guide: the PIP click row \"cap through bezel hole\" 0.5 diametral (packages/archetypes/src/pip/click.ts line 91) less one 0.1 mm step because the paddle guide is longer than the bezel hole; no coupon recorded; read by the access switch design (R1-flagship-access-switch-02)"
+      }
+    },
+    {
+      "id": "jack.boreD",
+      "value": 6.2,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "originals/baffle-r3/files/src/model.js line 124 (jack d 6.2, the panel jack bore BAFFLE R3 cuts through its printed wall as stacked three-layer prisms, lines 593 to 596 and 635 to 639); the PJ398SM catalog row carries no bushing size, KERF draws the same jack's hole r 3.2 (kerf-eurorack.html line 1987); no coupon recorded; read by reference/keys/access-switch/jack.ts (R1-flagship-access-switch-06)"
+      }
+    },
+    {
+      "id": "jack.panelT",
+      "value": 3.6,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "originals/baffle-r3/files/src/model.js line 110 (wall 2.4) plus line 124 (deep 1.2, the nut land inside the wall), the PETG the jack nut clamps at BAFFLE R3's jack; the PJ398SM thread length is not in the catalog row (unknown); no coupon recorded; read by reference/keys/access-switch/jack.ts (R1-flagship-access-switch-06)"
+      }
+    },
+    {
+      "id": "jack.bodyDepth",
+      "value": 11,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "originals/kerf-eurorack/files/kerf-eurorack.html line 1634 (buildJack body BoxGeometry(8, 8, 11), the PJ-398SM body behind the panel in KERF's 3D view, a drawn model and not a vendor drawing); the PJ398SM catalog row gives the 9 x 10.45 footprint and no depth (unknown until a jack is measured); read by reference/keys/access-switch/jack.ts (R1-flagship-access-switch-06)"
+      }
+    },
+    {
+      "id": "jack.clr",
+      "value": 0.3,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "originals/pip/files/haft-src/src/layout.js line 39 (board clr 0.3, the pocket clearance round a seated part, each side), as the RP2040-Zero seat pocket uses it (packages/archetypes/src/pip/seat.ts clr); no coupon recorded; read by reference/keys/access-switch/jack.ts (R1-flagship-access-switch-06)"
+      }
+    },
+    {
+      "id": "jack.socketWall",
+      "value": 0.525,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "originals/pip/files/haft-src/src/layout.js line 39 (sockOD 1.8, sockBore 0.75): (1.8 - 0.75) / 2 = 0.525 drawn (computed), the printed socket wall; model.js line 593 asks at least 0.45 after bleed; no coupon recorded; read by reference/keys/access-switch/jack.ts (R1-flagship-access-switch-06)"
+      }
+    },
+    {
+      "id": "jack.socketLen",
+      "value": 3.0,
+      "unit": "mm",
+      "provenance": {
+        "tier": "inferred",
+        "method": "derived",
+        "date": "2026-10-20",
+        "source": "originals/pip/files/haft-src/src/layout.js line 39 (pinLen 3.0, the pin length into a printed socket); model.js line 595 asks at least 2.0 (seat.socketPinMin); the PJ398SM leg length is not in the catalog row (unknown); no coupon recorded; read by reference/keys/access-switch/jack.ts (R1-flagship-access-switch-06)"
+      }
+    },
+    {
+      "id": "coupon.coinMassG",
+      "value": 5.0,
+      "unit": "g",
+      "provenance": {
+        "tier": "vendor",
+        "method": "datasheet",
+        "date": "2026-10-20",
+        "source": "US Mint coin specifications, five cent coin (nickel) 5.000 g, https://www.usmint.gov/learn/coins-and-medals/circulating-coins/coin-specifications, read 2026-10-20 through a search excerpt because a direct fetch of the page returned HTTP 403; tolerance unknown; the stacked-coin dead weight of the spring coupon (R1-flagship-access-switch-10)"
+      }
+    },
+    {
       "id": "cascade.slopWarn",
       "value": 1.2,
       "unit": "mm",

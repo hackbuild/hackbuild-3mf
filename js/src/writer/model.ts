@@ -21,6 +21,8 @@ export interface WriterPart {
   readonly role?: BodyRole;
   /** Declared conductor width, mm, from the conductor feature of the same id; the CHK-3MF-08 loss quote reads it. */
   readonly widthMm?: number;
+  /** Thinnest t of the spring features on this body, mm; the thin-wall row reads it (src/overrides.ts). */
+  readonly springTMm?: number;
 }
 
 /**

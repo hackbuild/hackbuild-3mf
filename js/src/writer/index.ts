@@ -108,6 +108,8 @@ export interface BuildConfig {
   readonly designer?: string;
   /** Preset nozzle diameter, mm; slice_info only. Absent, DEFAULT_PRESET.nozzle with no printer, else printer_variant. */
   readonly nozzleMm?: number;
+  /** Preset line width, mm; the thin-wall row compares spring t against it (src/overrides.ts). Absent, no thin-wall row. */
+  readonly lineWidthMm?: number;
   readonly target?: ExportTarget;
   readonly template?: FilamentTemplate;
   readonly presets?: PresetTable;
@@ -240,7 +242,7 @@ export function build(cfg: BuildConfig): Built | Refused {
       "3D/3dmodel.model": modelXml(app, title, epoch, P, attr),
       "Metadata/filament_sequence.json": FILAMENT_SEQUENCE,
       "Metadata/hackbuild_chase.json": chase,
-      "Metadata/model_settings.config": modelSettingsXml(cfg.filaments.length, P, overridesOf(cfg.objects, cfg.adjacency)),
+      "Metadata/model_settings.config": modelSettingsXml(cfg.filaments.length, P, overridesOf(cfg.objects, cfg.adjacency, cfg.lineWidthMm)),
       "Metadata/project_settings.config": JSON.stringify(ps.settings, null, 4),
       "Metadata/slice_info.config": sliceInfoXml(appVersion(app), nozzle, P,
         cfg.filaments.map((f) => ({ tray: materials[f.type]!.tray, type: f.type, color: f.color.toUpperCase() }))),
@@ -262,6 +264,7 @@ export function build(cfg: BuildConfig): Built | Refused {
     card: () => printCard({
       filaments: cfg.filaments, printer, ...(cfg.layerHeight === undefined ? {} : { layerHeight: cfg.layerHeight }), objects: cfg.objects, materials,
       ...(cfg.adjacency === undefined ? {} : { adjacency: cfg.adjacency }),
+      ...(cfg.lineWidthMm === undefined ? {} : { lineWidthMm: cfg.lineWidthMm }),
     }),
   };
 }
@@ -287,6 +290,8 @@ export interface BodyEntry {
   readonly role?: BodyRole;
   /** Declared conductor width, mm, for the CHK-3MF-08 loss quote. */
   readonly widthMm?: number;
+  /** Thinnest t of the spring features on this body, mm, for the thin-wall row. */
+  readonly springTMm?: number;
   /** Part coordinates, mm, bed at z = 0, triangles counter-clockwise from outside. */
   readonly mesh: MeshData;
 }
@@ -328,6 +333,8 @@ export interface ThreeMfInput {
   readonly slicer: SlicerPreset;
   /** Preset nozzle diameter, mm; written to slice_info only. */
   readonly nozzleMm: number;
+  /** Preset line width, mm; absent, no thin-wall row. */
+  readonly lineWidthMm?: number;
   readonly template: FilamentTemplate;
   readonly materials: SlicerMaterials;
   /** Absent, packages/3mf/data/filament_presets.json. */
@@ -374,6 +381,7 @@ export function configOf(inp: ThreeMfInput): BuildConfig {
     ...(inp.license === undefined ? {} : { license: inp.license }),
     ...(inp.designer === undefined ? {} : { designer: inp.designer }),
     ...(inp.adjacency === undefined ? {} : { adjacency: inp.adjacency }),
+    ...(inp.lineWidthMm === undefined ? {} : { lineWidthMm: inp.lineWidthMm }),
     filaments: inp.filaments.map((f) => ({ color: f.colour, type: f.type, material: f.material })),
     objects: inp.objects.map((o) => ({
       name: o.name, ...(placed === undefined ? { positions: [o.position] } : { instances: placed.get(o.name)! }),
@@ -381,6 +389,7 @@ export function configOf(inp: ThreeMfInput): BuildConfig {
         name: b.name, slot: b.slot, positions: b.mesh.positions, indices: b.mesh.triangles,
         ...(b.body === undefined ? {} : { body: b.body }), ...(b.role === undefined ? {} : { role: b.role }),
         ...(b.widthMm === undefined ? {} : { widthMm: b.widthMm }),
+        ...(b.springTMm === undefined ? {} : { springTMm: b.springTMm }),
       })),
     })),
   };

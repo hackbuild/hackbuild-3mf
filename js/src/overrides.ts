@@ -14,14 +14,27 @@
 // and tools/py/checks/chk_3mf_08.py), so the writer and the check name the
 // same objects. Body roles and adjacency come from Part IR (spec/part-ir.ts
 // Body.role, Part.bodyAdjacency).
+//
+// A click spring beam drawn under 1.5 line widths thick prints as one line,
+// and the classic wall generator drops such a wall unless thin-wall
+// detection is on (pip RECORD 5.2 "Print"; haft model.js line 540). The
+// Flashforge profile 02.01.01.02 bundled with Flash Studio 1.7.14 gives
+// process "0.24mm Standard @FF C5" wall_generator classic (from
+// fdm_process_flashforge_common) and detect_thin_wall 0 (from
+// fdm_process_common), vendor, read from the app's profiles. So every
+// object holding such a beam gets `detect_thin_wall` 1. CHK-KEY-04 gates
+// the beam's force on its drawn t, which holds only if the beam prints.
 
 import type { BodyAdjacency, BodyRole, CheckId } from "./contracts.js";
-import type { WriterObject } from "./writer/model.js";
+import type { WriterObject, WriterPart } from "./writer/model.js";
 
 export const INTERLOCKING_BEAM = "interlocking_beam";
 export const INTERLOCKING_BEAM_WIDTH = "interlocking_beam_width";
 export const INTERLOCKING_DEPTH = "interlocking_depth";
 export const SPARSE_INFILL_DENSITY = "sparse_infill_density";
+export const DETECT_THIN_WALL = "detect_thin_wall";
+/** A spring beam thinner than this many line widths is one line (PIP RECORD 5.2; brief R1-flagship-access-switch-07). */
+export const THIN_WALL_LINES = 1.5;
 /** Key of the conductor record in Metadata/hackbuild_chase.json. */
 export const CONDUCTOR_RECORD = "conductors";
 
@@ -58,6 +71,10 @@ export const OVERRIDE_ROWS: readonly OverrideRow[] = [
   {
     appliesTo: "object holding a TPU body bonded to PETG with no conductor adjacency", scope: "object",
     key: INTERLOCKING_BEAM, value: "1", wantedBy: null, written: false,
+  },
+  {
+    appliesTo: "object holding a body with a spring feature whose t is under 1.5 line widths", scope: "object",
+    key: DETECT_THIN_WALL, value: "1", wantedBy: "CHK-KEY-04", written: true,
   },
 ];
 
@@ -125,13 +142,29 @@ export interface ObjectOverrides {
   readonly parts: readonly Readonly<Record<string, string>>[];
 }
 
-/** Overrides per object, in object order (M05-T20 step 2). An object no row applies to gets empty records. */
-export function overridesOf(objects: readonly WriterObject[], adjacency: readonly BodyAdjacency[] = []): ObjectOverrides[] {
+/**
+ * True when a part carries a spring beam that prints as one line: its
+ * thinnest spring t under THIN_WALL_LINES line widths. No line width, no
+ * test, so a caller without a preset writes no thin-wall row.
+ */
+export const isOneLineBeam = (part: WriterPart, lineWidthMm: number | undefined): boolean =>
+  part.springTMm !== undefined && lineWidthMm !== undefined && part.springTMm < THIN_WALL_LINES * lineWidthMm;
+
+/**
+ * Overrides per object, in object order (M05-T20 step 2). An object no row
+ * applies to gets empty records. lineWidthMm is the preset line width the
+ * thin-wall row compares spring t against.
+ */
+export function overridesOf(objects: readonly WriterObject[], adjacency: readonly BodyAdjacency[] = [], lineWidthMm?: number): ObjectOverrides[] {
   const beamFree = new Set(conductorObjects(objects, adjacency).map((c) => c.object));
   const infill = row(SPARSE_INFILL_DENSITY, "part");
   const beam = row(INTERLOCKING_BEAM, "object");
+  const thin = row(DETECT_THIN_WALL, "object");
   return objects.map((o) => ({
-    object: beamFree.has(o.name) ? { [beam.key]: beam.value } : {},
+    object: {
+      ...(beamFree.has(o.name) ? { [beam.key]: beam.value } : {}),
+      ...(o.parts.some((p) => isOneLineBeam(p, lineWidthMm)) ? { [thin.key]: thin.value } : {}),
+    },
     parts: o.parts.map((p) => (isConductorRole(p.role) ? { [infill.key]: infill.value } : {})),
   }));
 }

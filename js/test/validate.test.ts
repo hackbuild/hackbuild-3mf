@@ -1,4 +1,4 @@
-// M00-T09: the TypeScript validator mirror and CHK-3MF-04.
+// M00-T09: the TypeScript validator mirror.
 // Steps 1 to 3, 5 and 8: the mirror passes the gold save under --roundtrip,
 // fails each known-bad fixture with the named check, passes the writer's own
 // export, and reaches the Python validator's verdict on every corpus row.
@@ -10,7 +10,6 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterAll, describe, expect, it } from "vitest";
 import JSZip from "jszip";
-import { canonicalize } from "../src/contracts.js";
 import type { CheckResult } from "../src/contracts.js";
 import {
   CHECK_META, build, readEntries, validateEntries, validateZip, DEFAULT_PRESET, printerOf,

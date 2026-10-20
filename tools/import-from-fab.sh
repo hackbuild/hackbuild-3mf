@@ -282,6 +282,11 @@ perl -0pi -e '
 ' js/test/plate-layout.test.ts
 grep -q 'process.env\["HBF_FAB"\]' js/test/plate-layout.test.ts || { echo "plate-layout.test.ts no longer names its legacy file as the script expects" >&2; exit 1; }
 
+# thin-wall.test.ts reads the ffc5p preset from fab's profile machines.json;
+# here py/hackbuild_3mf/data carries the same file.
+perl -0pi -e 's#const ROOT = new URL\("\.\./\.\./\.\./", import\.meta\.url\);\n##; s#new URL\("packages/profile/data/machines\.json", ROOT\)#new URL("../../py/hackbuild_3mf/data/machines.json", import.meta.url)#; s#in packages/profile/data/machines\.json#in py/hackbuild_3mf/data/machines.json#' js/test/thin-wall.test.ts
+grep -q 'py/hackbuild_3mf/data/machines.json", import.meta.url' js/test/thin-wall.test.ts || { echo "thin-wall.test.ts no longer reads machines.json as the script expects" >&2; exit 1; }
+
 # validate.test.ts: corpus and Python paths in this layout; CHK-3MF-04
 # fixtures stay with the check in hackbuild-fab.
 perl -0pi -e '

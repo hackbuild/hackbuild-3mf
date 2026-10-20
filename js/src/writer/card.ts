@@ -32,6 +32,8 @@ export interface CardInput {
   readonly materials: SlicerMaterials;
   /** Part IR body adjacency, for the per-object overrides (src/overrides.ts). */
   readonly adjacency?: readonly BodyAdjacency[];
+  /** Preset line width, mm, for the thin-wall row (src/overrides.ts). */
+  readonly lineWidthMm?: number;
 }
 
 export function printCard(cfg: CardInput): string {
@@ -61,7 +63,7 @@ export function printCard(cfg: CardInput): string {
   // Whether Flash Studio honours these from model_settings.config is open
   // until the owner opens an export in it (M05-T20 open item), so the card
   // lists each one for the person to confirm in the slicer.
-  const overrides = overridesOf(cfg.objects, cfg.adjacency).flatMap((ov, k) => {
+  const overrides = overridesOf(cfg.objects, cfg.adjacency, cfg.lineWidthMm).flatMap((ov, k) => {
     const o = cfg.objects[k]!;
     const set = (rec: Readonly<Record<string, string>>): string => Object.entries(rec).map(([key, v]) => `${key} ${v}`).join(", ");
     return [
