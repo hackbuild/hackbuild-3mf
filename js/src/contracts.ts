@@ -36,7 +36,7 @@ export const TIERS = ["verified", "measured", "vendor", "community", "inferred"]
 export type Tier = (typeof TIERS)[number];
 
 export const CHECK_AREAS = [
-  "PRT", "FIT", "ASM", "SHT", "NET", "BRD", "MOT", "3MF", "INL", "LNT", "SHP", "KEY", "UI", "ART", "DEV",
+  "PRT", "FIT", "ASM", "SHT", "NET", "BRD", "MOT", "3MF", "INL", "LNT", "SHP", "KEY", "UI", "ART", "DEV", "CLAIM",
 ] as const;
 export type CheckArea = (typeof CHECK_AREAS)[number];
 /** CHK-<AREA>-NN, for example "CHK-3MF-06". */
