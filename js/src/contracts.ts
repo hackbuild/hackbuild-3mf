@@ -115,7 +115,7 @@ export interface BuildWarning {
 
 export const ERROR_CODES = [
   "E_SCHEMA", "E_REF", "E_UNSAT", "E_HANDLE", "E_STALE", "E_PROVENANCE",
-  "E_GATE", "E_GATE_UNAVAILABLE", "E_REPEAT", "E_KERNEL", "E_PARAM_MISSING",
+  "E_GATE", "E_GATE_UNAVAILABLE", "E_REPEAT", "E_KERNEL", "E_PARAM_MISSING", "E_DRAFT",
 ] as const;
 export type ErrorCode = (typeof ERROR_CODES)[number];
 export interface CommandError {
